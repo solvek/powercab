@@ -7,5 +7,8 @@ This document describes main approaches to developing application.
 
 = User options =
 == Password saving ==
-*There must be option that allows user not to save password, in this case after each starting of program user must enter password again.
-*Best practices for storing passwords are described here http://rsdn.ru/article/files/Classes/passwd.xml
+* There must be option that allows user not to save password, in this case after each starting of program user must enter password again.
+
+* Best practices for storing passwords are described  [http://rsdn.ru/article/files/Classes/passwd.xml here]
+
+

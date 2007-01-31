@@ -2,13 +2,10 @@
 
 = Introduction =
 
-Add your content here.
+This document describes main approaches to developing application.
 
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
-
+= User options =
+== Password saving ==
+*There must be option that allows user not to save password, in this case after each starting of program user must enter password again.
+*Best practices for storing passwords are described here http://rsdn.ru/article/files/Classes/passwd.xml

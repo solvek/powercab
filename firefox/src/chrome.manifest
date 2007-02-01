@@ -1,0 +1,5 @@
+content     adamantfx    chrome/content/
+overlay 	chrome://browser/content/browser.xul chrome://adamantfx/content/sb.xul
+locale		adamantfx	en	locale/en-US/
+locale		adamantfx	uk	locale/uk-UA/
+locale		adamantfx	ru	locale/uk-UA/

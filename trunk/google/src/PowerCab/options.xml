@@ -1,0 +1,12 @@
+﻿<view height="200" width="400">
+    <label height="16" name="lblUserName" width="118" x="21" y="34">&OPTIONS_USER_NAME;
+    </label>
+    <edit height="16" name="txtUserName" width="211" x="154" y="43"/>
+    <label height="16" width="121" x="21" y="74">&OPTIONS_PASSWORD;
+    </label>
+    <edit height="16" name="txtPassword" width="230" x="144" y="76" passwordChar="*"
+     />
+    <label height="16" width="115" x="24" y="106">&OPTIONS_REFRESH_RATE;
+    </label>
+    <edit height="16" width="33" x="161" y="110" value="10"/>
+</view>

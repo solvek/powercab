@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<userInfo>
+	<message></message> <!-- Цей тег може містити корисну текстову інформацію абоненту (може бути порожнім), 
+		але якщо тег details відсутній - тег містить інформацію про помилку, наприклад 
+		"Имя пользователя или пароль указаны неверно, попробуйте еще раз." -->
+	<details>
+		<planType>prevalent</planType> <!-- код тарифного плану (з фіксованого енумерейшина): prevalent - Преобладающий -->
+		<dateActuality>02.02.2007 19:20:53</dateActuality> <!-- час і дата актуальності даних -->
+		<trafficLimit>3072</trafficLimit> <!-- передоплачений трафік -->
+		<balance>4.51</balance> <!-- баланс на рахунку -->
+		<traffic>
+			<item name="World"><in>219.65</in><out>16.95</out></item>
+			<item name="UA-IX"><in>108.20</in><out>845.45</out></item>
+			<item name="UA-Media"><in>1080.20</in><out>8.45</out></item>
+		</traffic>
+	</details>
+</userInfo>

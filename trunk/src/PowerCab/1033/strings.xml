@@ -1,0 +1,9 @@
+﻿<strings>
+  <GADGET_DESCRIPTION>Adamant traffic visualization</GADGET_DESCRIPTION>
+  <GADGET_ABOUT_TEXT>PowerCab
+Sergi Adamchuk © 2007 
+PowerCab</GADGET_ABOUT_TEXT>
+  <OPTIONS_USER_NAME>User Name</OPTIONS_USER_NAME>
+  <OPTIONS_PASSWORD>Password</OPTIONS_PASSWORD>
+  <OPTIONS_REFRESH_RATE>Refresh Rate</OPTIONS_REFRESH_RATE>
+</strings>

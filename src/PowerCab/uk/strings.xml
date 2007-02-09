@@ -1,0 +1,9 @@
+﻿<strings>
+  <GADGET_DESCRIPTION>Візуалізація трафіку для абонентів Адаманту</GADGET_DESCRIPTION>
+  <GADGET_ABOUT_TEXT>PowerCab
+Sergi Adamchuk © 2007 
+PowerCab</GADGET_ABOUT_TEXT>
+  <OPTIONS_USER_NAME>Користувач</OPTIONS_USER_NAME>
+  <OPTIONS_PASSWORD>Пароль</OPTIONS_PASSWORD>
+  <OPTIONS_REFRESH_RATE>Період оновлення</OPTIONS_REFRESH_RATE>
+</strings>

@@ -1,5 +1,9 @@
 #labels Phase-Design
 # Технічна документація для розробників.
+= Програмне забезпечення =
+ # [http://desktop.google.com/ Google Desktop]
+ # [http://desktop.google.com/dev/index.html Google Desktop SDK]
+ # [http://tortoisesvn.net/downloads Tortoise SVN]
 
 = Завантаження даних =
 Дані приходять у вигляді xml
@@ -15,4 +19,3 @@
  <traf_cnt name="west" max="561.51" rx="486.49" sum="1048" tx="561.51"/>
 </opt>
 }}}
-

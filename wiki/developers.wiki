@@ -1,9 +1,12 @@
 #labels Phase-Design
 # Технічна документація для розробників.
 = Програмне забезпечення =
+== Обов'язково ==
  # [http://desktop.google.com/ Google Desktop]
  # [http://desktop.google.com/dev/index.html Google Desktop SDK]
  # [http://tortoisesvn.net/downloads Tortoise SVN]
+== Опціоанально ==
+ # EmEditor - текстовий редактор (платний), підтримує синтаксичне підсвічування, макроси, та багато іншого, можна навіть налаштувати як IDE.
 
 = Завантаження даних =
 Дані приходять у вигляді xml. Приклад такого XML файлу можна знайти [https://powercab.googlecode.com/svn/trunk/docs/InputDataSample.xml тут].

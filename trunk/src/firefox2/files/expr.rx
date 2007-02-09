@@ -1,2 +1,0 @@
-<th\s+colspan="3"\s+align="center">[^:]+:\s*(\d+\.\d+)
-<td>(\d+\.\d+)</td><td>(\d+\.\d+)</td><td>(\d+\.\d+)</td><td>(\d+\.\d+)</td><td>(\d+\.\d+)</td><td>(\d+\.\d+)</td><td>(\d+\.\d+)</td></tr>\s*<tr\s+bgcolor

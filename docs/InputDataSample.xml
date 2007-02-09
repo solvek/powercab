@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<opt>
+ <class_ids free="Бесплатный" media="UA-медиа архивы" total="Общий" ua="Украинский" west="Западный"/>
+  <g_data 
+  		name="Адамчук Сергей Валентинович" 
+  		account="4.51" 
+  		addr="Харьковское шоссе 67-А кв 209" 
+  		contract="ДС 003/2006" 
+  		contract_date="2006-01-23" 
+  		from_date="2006-01-25" 
+  		ip="10.64.1.12" 
+  		state="Активен" 
+  		tarif_abonfee="50.00" 
+  		tarif_name="Преобладающий" 
+  		timestamp="15:14:17 07.02.2007"/>
+ <limit name="total" limit="3072" price="0.11" type="prevail"/>
+ <traf_cnt name="media" max="1449.86" rx="1449.86" sum="1476.06" tx="26.20"/>
+ <traf_cnt name="total" max="613.69" rx="613.69" sum="1202.96" tx="589.27"/>
+ <traf_cnt name="ua" max="127.20" rx="127.20" sum="154.96" tx="27.76"/>
+ <traf_cnt name="west" max="561.51" rx="486.49" sum="1048" tx="561.51"/>
+</opt>

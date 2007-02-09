@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE dialog SYSTEM "chrome://adamantfx/locale/prefwindow.dtd">
+<prefwindow id="tstPreferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;" height="200px" width="500px">
+  <prefpane id="pane1" label="Options">
+    <preferences>
+      <preference id="username" name="extensions.adamantfx.username" type="string"/>
+      <preference id="password" name="extensions.adamantfx.password" type="string"/>
+      <preference id="timeout" name="extensions.adamantfx.timeout" type="int"/>
+    </preferences>
+    <vbox>
+	    <label 
+	    	control="inpusername">&intpref.username;</label>
+	    <textbox
+	    	id="inpusername" 
+	    	preference="username"/>
+	    <label 
+	    	control="inppassword">&intpref.password;</label>
+	    <textbox
+	    	id="inppassword" 
+	    	preference="password"
+	    	type="password"/>
+	    <label 
+	    	control="timeout">&intpref.refrperiod;</label>
+	    <textbox
+	    	id="timeout" 
+	    	preference="timeout"/>	    	
+    </vbox>
+  </prefpane>
+</prefwindow>

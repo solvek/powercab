@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="afx.css" type="text/css"?>
+<!DOCTYPE dialog SYSTEM "chrome://adamantfx/locale/main.dtd">
+<overlay id="sample" 
+	         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script src="overlay.js"/>
+	<statusbar id="status-bar">
+	  <statusbarpanel id="afx-panel" class="afx-whole" context="afx-cxmenu" tooltip="afx-tooltip">
+	  	<stringbundle id="afx-messErrors" src="chrome://adamantfx/locale/errors.properties"/>
+		<image src="chrome://adamantfx/content/in.gif"/>
+		<label value="NA" id="afx-trafIn" class="afx-simple-label"/>
+		<image src="chrome://adamantfx/content/out.gif"/>
+		<label value="NA" id="afx-trafOut" class="afx-simple-label"/>
+		<image src="chrome://adamantfx/content/adlogo.png" onclick="AdamantFx.reload(event)" id="afx-mainbutton"/>
+		<pupupset>
+		    <popup id="afx-cxmenu" position="before_end">
+		  		<menuitem
+		  			label="&menu.prefs;"
+		    		oncommand="AdamantFx.showOptions(event)"/>
+		  		<menuitem
+		  			label="&menu.forum;"
+		    		oncommand="AdamantFx.goToForum(event)"/>
+		  		<menuitem
+		  			label="&menu.cabinet;"
+		    		oncommand="AdamantFx.goToCabinet(event)"/>
+			</popup>
+			<popup id="afx-tooltip" insertafter="backMenu">
+				<vbox id="afx-tooltip-box">
+					<label value="&tooltip.ready;"/>
+				</vbox>
+			</popup>
+		</pupupset>
+	  </statusbarpanel>
+	</statusbar>
+</overlay>

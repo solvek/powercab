@@ -32,7 +32,7 @@
 
 ==Class Fetcher==
  * addParameter(String _name_, String _value_)
- * beginRequest(CallBack)
+ * beginRequest(String url, String method, CallBack)
  * String getResult()
  * Integer getStatus()
 

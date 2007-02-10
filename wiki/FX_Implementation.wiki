@@ -1,5 +1,5 @@
+#summary Опис нюансів реалізації для Firefox Exstension (FX)
 #labels firefox
-#Опис нюансів реалізації для Firefox Exstension (FX)
 
 = Де знайти корисну інформацію =
  * [http://developer.mozilla.org/ mozilla developer center]

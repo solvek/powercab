@@ -1,0 +1,7 @@
+#labels firefox
+#Опис нюансів реалізації для Firefox Exstension (FX)
+
+= Де знайти корисну інформацію =
+ * [http://developer.mozilla.org/ mozilla developer center]
+ * [http://developer.mozilla.org/en/docs/Extensions Розробка розширень]
+ * [http://forums.mozillazine.org/?c=11 MozillaZine forum]

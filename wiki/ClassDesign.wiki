@@ -1,0 +1,37 @@
+# Архітектура класів.
+
+=Загальні класи=
+Ці класи реалізують загальну логігу для всіх видів хостів (Firefox, GoogleDesktop)
+
+==PowerCab==
+Головний клас, використовуюється UI-єм для оперування логікою.
+ * Конструктор PowerCab(OptionsReader, CallBack _Початок запиту_, CallBack _Кінець запиту_)
+ * startRefresh()
+ * DataContainer getData()
+ * preferencesChanged()
+
+==FetchStrategy==
+Описує стратегію одерджання даних (url для оновлення, метод оновлення, спосіб конвертації одержаного тексту в потрібної форми XML)
+ * String QueryUrl
+ * String generateXml(String)
+ * String getMethodType()
+
+=Класи - реалізації=
+Ці класи реалізують специфічну логіку для хостів
+
+==OptionsReader==
+ * getUserName()
+ * getPassword()
+ * getRefreshRate()
+
+==Timer==
+ * Timer(CallBack)
+ * start(Int _interval in ms_)
+ * stop()
+
+==Fetcher==
+ * addParameter(String _name_, String _value)
+ * beginRequest(CallBack)
+ * 
+
+

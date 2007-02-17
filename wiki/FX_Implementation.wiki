@@ -7,15 +7,16 @@
  * [http://forums.mozillazine.org/?c=11 MozillaZine forum]
 
 = Відлагодження розширення =
- * Налаштувати (*обов'язково*) Firefox згідно [http://kb.mozillazine.org/Setting_up_extension_development_environment цих] рекомендацій
- * В папці C:\Documents and Settings\sergi\Application Data\Mozilla\Firefox\Profiles\phy1bkww.Sergi\extensions\ створити текстовий файл з іменем *D3B5C0C7-669F-4646-9367-E83664AEABDB* (без розширення), якщо є така папка - її потрібно вилучити.
- * У цьому текстовому файлі додати рядок тексту - повний шлях до папки з сирцями розширення - це повинен бути повний шлях до локальної копії папки https://powercab.googlecode.com/svn/trunk/src/firefox ([http://developer.mozilla.org/en/docs/Building_an_Extension#Test детальніше])
- * Перевантажити FF
+ # Налаштувати (*обов'язково*) Firefox згідно [http://kb.mozillazine.org/Setting_up_extension_development_environment цих] рекомендацій
+ # В папці C:\Documents and Settings\sergi\Application Data\Mozilla\Firefox\Profiles\phy1bkww.Sergi\extensions\ створити текстовий файл з іменем *`D3B5C0C7-669F-4646-9367-E83664AEABDB`* (без розширення), якщо є така папка - її потрібно вилучити.
+ # У цьому текстовому файлі додати рядок тексту - повний шлях до папки з сирцями розширення - це повинен бути повний шлях до локальної копії папки https://powercab.googlecode.com/svn/trunk/src/firefox ([http://developer.mozilla.org/en/docs/Building_an_Extension#Test детальніше])
+ # Перевантажити FF
 
 = Задачі =
- * Переписати на новий [ClassDesign дизайн класів]
- * Робота з XML
- * XSLT трансформація
- * Відображення таба з HTML
- * Шифрувати пароль
- * Забезпечити автоматичну перевірку оновлень
+ # Переписати на новий [ClassDesign дизайн класів]
+ # Робота з XML
+ # XSLT трансформація
+ # Відображення таба з HTML
+ # Шифрувати пароль
+ # Забезпечити автоматичну перевірку оновлень
+

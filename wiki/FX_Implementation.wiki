@@ -14,7 +14,7 @@
 
 = Задачі =
  # Переписати на новий [ClassDesign дизайн класів]
- # Робота з XML
+ # [http://developer.mozilla.org/en/docs/XML_Extras Робота з XML]
  # XSLT трансформація
  # Відображення таба з HTML
  # Шифрувати пароль

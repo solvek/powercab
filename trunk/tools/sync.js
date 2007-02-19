@@ -6,17 +6,18 @@ var infoXml = loadXmlDocument('../src/common/Info.xml');
 syncFiles("../src/common/PowerCab.js", "../src/firefox/chrome/content/classes/PowerCab.js");
 syncFiles("../src/common/FetchStrategy.js", "../src/firefox/chrome/content/classes/FetchStrategy.js");
 
-var curXml = new XmlModifier("../src/firefox/install.rdf");
-curXml.xmlDoc.setProperty("SelectionNamespaces", "xmlns:em='http://www.mozilla.org/2004/em-rdf#'");
-curXml.changeValue(getXmlValue("/*/version"), "/*/*/em:version");
-curXml.changeValue(getXmlValue("/*/name")+" FX", "/*/*/em:name");
-curXml.changeValue(getXmlValue("/*/author"), "/*/*/em:creator");
-curXml.changeValue(getXmlValue("/*/homepage"), "/*/*/em:homepageURL");
-curXml.save();
+var curTextFile = new FileModifier("../src/firefox/install.rdf");
+curTextFile.changeValue("$1"+getXmlValue("/*/version")+"$3", new RegExp("(<em:version>)([^<]*)(</em:version>)", "m"));
+curTextFile.changeValue("$1"+getXmlValue("/*/name")+" FX$3", new RegExp("(<em:name>)([^<]*)(</em:name>)", "m"));
+curTextFile.changeValue("$1"+getXmlValue("/*/author")+"$3", new RegExp("(<em:creator>)([^<]*)(</em:creator>)", "m"));
+curTextFile.changeValue("$1"+getXmlValue("/*/homepage")+"$3", new RegExp("(<em:homepageURL>)([^<]*)(</em:homepageURL>)", "m"));
+curTextFile.save();
 
-//curXml = new XmlModifier("../src/firefox/chrome/content/about.xul", processAbout);
-//curXml.changeAttribute(getXmlValue("/*/name")+" FX", "/", "title");
-//curXml.save();
+curTextFile = new FileModifier("../src/firefox/chrome/content/about.xul");
+curTextFile.changeValue("$1"+getXmlValue("/*/name")+" FX", new RegExp("(title=\"&about; )([^\"]*)", "m"));
+curTextFile.changeValue("$1"+getXmlValue("/*/version"), new RegExp("(<text value=\"&version; )([^\"]*)", "m"));
+curTextFile.changeValue("$1"+getXmlValue("/*/author"), new RegExp("(<text\s*value=\"&createdBy;[^>]*>(\n|\n\r|\r\n|\r)?\s*<text\s*value=\")([^\"]*)", "m")); // Does not work currenctly
+curTextFile.save();
 
 // Helping functions
 function syncFiles(originalPath)
@@ -49,37 +50,24 @@ function syncFiles(originalPath)
 	}
 }
 
-function XmlModifier(filePath, fileProcessor)
+function FileModifier(filePath)
 {
 	this.filePath = filePath;
-	this.xmlDoc = loadXmlDocument(filePath, fileProcessor);
+	var file = fileSystemObject.OpenTextFile(filePath);
+	this.fileText = file.ReadAll();
+	file.Close();
 	
-	this.changeValue = function(val, xPathTarget)
+	this.changeValue = function(val, expr)
 	{
-		//WScript.Echo(this.xmlDoc.documentElement.nodeName);
-		var node = this.xmlDoc.documentElement.selectSingleNode(xPathTarget);
-		if (node == null)
-		{
-			throw new Error("XPath '"+xPathTarget+"' not found.");
-		}
-		//WScript.Echo(node.xml);
-		node.text = val;
-	}
-	
-	this.changeAttribute = function(val, xPathTarget, attrName)
-	{
-	//	WScript.Echo(this.xmlDoc.text);
-		var node = this.xmlDoc.selectSingleNode(xPathTarget);
-		if (node == null)
-		{
-			throw new Error("XPath '"+xPathTarget+"' not found.");
-		}
-		node.attributes.item(attrName).text = val;
+		var res = this.fileText.match(expr);
+		this.fileText = this.fileText.replace(expr, val);
 	}
 	
 	this.save = function()
 	{
-		this.xmlDoc.save(this.filePath);
+		var file = fileSystemObject.CreateTextFile(this.filePath, true);
+		file.Write(this.fileText);
+		file.Close();
 	}
 }
 
@@ -88,32 +76,15 @@ function getXmlValue(xPath)
 	return infoXml.selectSingleNode(xPath).text;
 }
 
-function loadXmlDocument(filePath, fileProcessor)
+function loadXmlDocument(filePath)
 {
 	var doc = new ActiveXObject("Msxml2.DOMDocument.3.0");
 	doc.async = false;
-	if (arguments.length == 1)
-	{
-		doc.load(filePath);
-	}
-	else
-	{
-		var file = fileSystemObject.OpenTextFile(filePath);
-		var fileText = file.ReadAll();
-		file.Close();
-		
-		doc.loadXML(fileProcessor(fileText));
-	}
+	doc.load(filePath);
 	if (doc.parseError.errorCode != 0)
 	{
 		throw new Error("Cannot load xml '"+filePath+"'. Error " + doc.parseError.reason);
 	}
 	doc.setProperty("SelectionLanguage", "XPath");
 	return doc;
-}
-
-function processAbout(fileText)
-{
-	var start = fileText.indexOf("<dialog");
-	return fileText.substr(start);
 }

@@ -1,7 +1,6 @@
 ﻿var AdamantFx = {
   onLoad: function() {
     this.initialized = true;
-    this.preferences = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
     var dataNotSpecified = true;
     do{
     	dataNotSpecified = (this.getUserName() == null)||(this.getUserName() == "")||(this.getPassword() == null);
@@ -20,11 +19,11 @@
   },
   
   goToForum: function(event) {
-    this.goToUrl("http://forum.homenet.adamant.net/index.php?act=search&CODE=getactive");
+    this.goToUrl("http://forum.homenet.adamant.ua/index.php?act=search&CODE=getactive");
   },
   	  
   goToCabinet: function(event) {
-    this.goToUrl("https://cabinet.homenet.adamant.net/");
+    this.goToUrl("https://cabinet.homenet.adamant.ua/");
   },
   	  
   showOptions: function(event) {
@@ -106,31 +105,13 @@
     window.setTimeout(this.timerElapsed, 60000*this.getTimeout(), this);
  },
  	 getUserName : function(){
- 	 	 try{
- 	 	 	return this.preferences.getCharPref("extensions.adamantfx.username");
- 	 	 }
- 	 	 catch(e){
- 	 	 	 return null;
- 	 	 }
+ 	 	 return HostController.getUserName();
  	 },
  	 getPassword : function(){
- 	 	 try{
-	 	 	 return this.preferences.getCharPref("extensions.adamantfx.password");
- 	 	 }
- 	 	 catch(e){
- 	 	 	 return null;
- 	 	 }
+ 	 	 return HostController.getPassword();
  	 },
  	 getTimeout : function(){
- 	 	 try
- 	 	 {
- 	 	 	return this.preferences.getIntPref("extensions.adamantfx.timeout");
- 	 	 }
- 	 	 catch(e)
- 	 	 {
- 	 	 	 dump("Error getting period: "+e);
- 	 	 	 return 15;
- 	 	 }
+ 	 	 return HostController.getRefreshRate();
  	 }
 };
 

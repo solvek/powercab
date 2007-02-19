@@ -3,6 +3,7 @@
 <!DOCTYPE dialog SYSTEM "chrome://adamantfx/locale/main.dtd">
 <overlay id="sample" 
 	         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script src="classes/HostController.js"/>
 	<script src="overlay.js"/>
 	<statusbar id="status-bar">
 	  <statusbarpanel id="afx-panel" class="afx-whole" context="afx-cxmenu" tooltip="afx-tooltip">

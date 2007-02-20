@@ -14,8 +14,8 @@
 
 = Задачі =
  # Переписати на новий [ClassDesign дизайн класів]
- # [http://developer.mozilla.org/en/docs/XML_Extras Робота з XML]
+ # [http://developer.mozilla.org/en/docs/XML_Extras Робота з XML] ([http://developer.mozilla.org/en/docs/Code_snippets:XML Code Snippets])
  # XSLT трансформація
  # Відображення таба з HTML
  # Шифрувати пароль
- # Забезпечити автоматичну перевірку оновлень
+ # Забезпечити автоматичну [http://developer.mozilla.org/en/docs/Extension_Versioning%2C_Update_and_Compatibility#Custom_Update_RDF_Format] перевірку оновлень

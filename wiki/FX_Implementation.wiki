@@ -6,11 +6,18 @@
  * [http://developer.mozilla.org/en/docs/Extensions Розробка розширень]
  * [http://forums.mozillazine.org/?c=11 MozillaZine forum]
 
-= Відлагодження розширення =
+= Розгортання для девелопменту =
  # Налаштувати (*обов'язково*) Firefox згідно [http://kb.mozillazine.org/Setting_up_extension_development_environment цих] рекомендацій
  # В папці *C:\Documents and Settings\sergi\Application Data\Mozilla\Firefox\Profiles\phy1bkww.Sergi\extensions\* створити текстовий файл з іменем *`{D3B5C0C7-669F-4646-9367-E83664AEABDB}`* (без розширення), якщо є така папка - її потрібно вилучити.
  # У цьому текстовому файлі додати рядок тексту - повний шлях до папки з сирцями розширення - це повинен бути повний шлях до локальної копії папки https://powercab.googlecode.com/svn/trunk/src/firefox ([http://developer.mozilla.org/en/docs/Building_an_Extension#Test детальніше])
  # Перевантажити FF
+
+= JavaScript Debugging ==
+Чудовий JavaScript відлагоджувач [http://developer.mozilla.org/en/docs/Venkman Venkman] - це розширення для ФФ.
+ * Після інсталяції запускаєтья з меню _Tools/JavaScript Debugger_.
+ * Щоб відкрити файл з PowerCab FX, потрібно в дебагері вибрати меню _File/Open Web Location..._, тоді ввести chrome урелку файлу, наприклад _chrome://adamantfx/content/overlay.js_ чи _chrome://adamantfx/content/classes/PowerCab.js_.
+ * Потім поставити потрібні брейкпонти.
+ * Чекати поки зупиниться в брейкпонті.
 
 = Задачі =
  # Переписати на новий [ClassDesign дизайн класів]

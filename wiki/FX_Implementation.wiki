@@ -19,10 +19,14 @@
  * Потім поставити потрібні брейкпонти.
  * Чекати поки зупиниться в брейкпонті.
 
-= Задачі =
- # Переписати на новий [ClassDesign дизайн класів]
- # [http://developer.mozilla.org/en/docs/XML_Extras Робота з XML] ([http://developer.mozilla.org/en/docs/Code_snippets:XML Code Snippets])
- # [http://developer.mozilla.org/en/docs/XSL_Transforms XSLT трансформація]
- # Відображення [http://developer.mozilla.org/en/docs/Code_snippets:Tabbed_browser таба з HTML]
- # [http://developer.mozilla.org/en/docs/Extensions:Questions_and_Answers_from_the_Newsgroups#Are_there_any_built_in_libraries_that_can_be_used_to_encrypt_data.3F_.5B2.5D Шифрувати пароль]
- # Забезпечити автоматичну [http://developer.mozilla.org/en/docs/Extension_Versioning%2C_Update_and_Compatibility#Custom_Update_RDF_Format перевірку оновлень]
+= Інша корисна інформація =
+== Робота з XML ==
+ * [http://developer.mozilla.org/en/docs/XML_Extras XML Extras] 
+ * [http://developer.mozilla.org/en/docs/Code_snippets:XML Code Snippets]
+ * [http://developer.mozilla.org/en/docs/XSL_Transforms XSLT трансформація]
+== Робота з табами ==
+ * Відображення [http://developer.mozilla.org/en/docs/Code_snippets:Tabbed_browser таба з HTML]
+== Безпека інформації ==
+ * [http://developer.mozilla.org/en/docs/Extensions:Questions_and_Answers_from_the_Newsgroups#Are_there_any_built_in_libraries_that_can_be_used_to_encrypt_data.3F_.5B2.5D Шифрування паролю]
+== Пакування розширення, пошук оновлень ==
+ * Автоматичну [http://developer.mozilla.org/en/docs/Extension_Versioning%2C_Update_and_Compatibility#Custom_Update_RDF_Format перевірка оновлень]

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes"/>
 	<xsl:template match="/opt">
@@ -36,7 +36,10 @@
 						</tr>
 					</xsl:for-each>
 				</tbody>
-			</table>			
+			</table>
+			<a href="https://cabinet.homenet.adamant.ua/">Cabinet</a><br/>
+			<a href="http://forum.homenet.adamant.ua/">Forum</a><br/>
+			<a href="http://homenet.adamant.ua/">Adamant Homenet</a><br/>
 			</body>
 		</html>
 	</xsl:template>

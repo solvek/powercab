@@ -16,18 +16,6 @@
     this.PowerCab.startRefresh();
   },
 
-  goToUrl: function(url) {
-    getBrowser().loadURI(url);
-  },
-  
-  goToForum: function(event) {
-    this.goToUrl("http://forum.homenet.adamant.ua/index.php?act=search&CODE=getactive");
-  },
-  	  
-  goToCabinet: function(event) {
-    this.goToUrl("https://cabinet.homenet.adamant.ua/");
-  },
-  	  
   showOptions: function(event) {
     window.openDialog("chrome://adamantfx/content/options.xul", null, "modal");
   },

@@ -5,6 +5,7 @@ var infoXml = loadXmlDocument('../src/common/Info.xml');
 // Synchronization process
 syncFiles("../src/common/PowerCab.js", "../src/firefox/chrome/content/classes/PowerCab.js");
 syncFiles("../src/common/FetchStrategy.js", "../src/firefox/chrome/content/classes/FetchStrategy.js");
+syncFiles("../src/common/details.xslt", "../src/firefox/chrome/content/details.xslt");
 
 var curTextFile = new FileModifier("../src/firefox/install.rdf");
 curTextFile.changeValue("$1"+getXmlValue("/*/version")+"$3", new RegExp("(<em:version>)([^<]*)(</em:version>)", "m"));
@@ -18,6 +19,8 @@ curTextFile.changeValue("$1"+getXmlValue("/*/name")+" FX", new RegExp("(title=\"
 curTextFile.changeValue("$1"+getXmlValue("/*/version"), new RegExp("(<text value=\"&version; )([^\"]*)", "m"));
 curTextFile.changeValue("$1"+getXmlValue("/*/author"), new RegExp("(<text\s*value=\"&createdBy;[^>]*>(\n|\n\r|\r\n|\r)?\s*<text\s*value=\")([^\"]*)", "m")); // Does not work currenctly
 curTextFile.save();
+
+WScript.Echo("Finished");
 
 // Helping functions
 function syncFiles(originalPath)

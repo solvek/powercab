@@ -21,14 +21,12 @@
 		<popupset>
 		    <popup id="afx-cxmenu" position="before_end">
 		  		<menuitem
+		  			label="&menu.details;"
+		    		oncommand="AdamantFx.showDetails(event)"
+		    		class="afx-bold-label"/>
+		  		<menuitem
 		  			label="&menu.prefs;"
 		    		oncommand="AdamantFx.showOptions(event)"/>
-		  		<menuitem
-		  			label="&menu.forum;"
-		    		oncommand="AdamantFx.goToForum(event)"/>
-		  		<menuitem
-		  			label="&menu.cabinet;"
-		    		oncommand="AdamantFx.goToCabinet(event)"/>
 			</popup>
 		</popupset>
 	  </statusbarpanel>

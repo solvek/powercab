@@ -42,7 +42,12 @@ function PowerCab(owner)
 			shortText = result.message;
 		}
 		this.owner.endRequest(shortText, data);
-	}
+	};
+	
+	this.prefferencesChanged = function()
+	{
+		this.startTimer();
+	};
 	
 	this.timer = new Timer(this);
 	//this.fetcher = new Fetcher(this, FetchStrategy.QueryUrl, FetchStrategy.getMethodType());

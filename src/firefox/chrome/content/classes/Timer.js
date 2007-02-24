@@ -1,12 +1,12 @@
-function Timer(callBack)
+function Timer(owner)
 {
-	this.callBack = callBack;
+	this.owner = owner;
 	this.intervaId = null;
 	
 	this.start = function(delay /* Interval in miliseconds*/)
 	{
 		this.stop();
-		this.intervaId = window.setInterval(this.callBack, delay);
+		this.intervaId = window.setInterval(this.Timer_ElapsedHandler, delay, this);
 	}
 	
 	this.stop = function()
@@ -16,5 +16,10 @@ function Timer(callBack)
 			window.clearInterval(this.intervaId);
 			this.intervaId = null;
 		}
+	}
+	
+	this.Timer_ElapsedHandler = function(obj)
+	{
+		obj.owner.timerElapsed(obj);
 	}
 }

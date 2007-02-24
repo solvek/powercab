@@ -3,15 +3,17 @@
     this.initialized = true;
     var dataNotSpecified = true;
     do{
-    	dataNotSpecified = (this.getUserName() == null)||(this.getUserName() == "")||(this.getPassword() == null);
+    	dataNotSpecified = (HostController.getUserName() == null)||(HostController.getUserName() == "")||(HostController.getPassword() == null);
     	if (dataNotSpecified){
     		this.showOptions();
     	}
     	dataNotSpecified = false;
     } while(dataNotSpecified);
-    this.MyToolTip = document.getElementById("afx-tooltip-box");
     this.AdamantButton = document.getElementById("afx-mainbutton");
-    this.reload();
+    this.ExtensionZone = document.getElementById("afx-panel");
+    this.data = null;
+    this.PowerCab = new PowerCab(this);
+    this.PowerCab.startRefresh();
   },
 
   goToUrl: function(url) {
@@ -29,108 +31,66 @@
   showOptions: function(event) {
     window.openDialog("chrome://adamantfx/content/options.xul", null, "modal");
   },
-  
-  reload: function() {
-  	  	var req = new XMLHttpRequest();
-		req.open('POST', 'https://cabinet.homenet.adamant.net/', true);
-		req.onreadystatechange = function (aEvt) {
-	  	if (req.readyState == 4) {
-	     if(req.status == 200)
-	     {
-		  	 AdamantFx.AdamantButton.src = "chrome://adamantfx/content/adlogo.png";
-		  	 AdamantFx.createTimer();
-	     	var txt = req.responseText;
-	     	try{
-		     	var m = txt.match(new RegExp("<td>(\\d+\.\\d+)</td><td>(\\d+\.\\d+)</td><td>(\\d+\.\\d+)</td><td>(\\d+\.\\d+)</td><td>(\\d+\.\\d+)</td><td>(\\d+\.\\d+)</td><td>(\\d+\.\\d+)</td></tr>\\s*<tr\\s+bgcolor=\\\".C0C0FF", "im"));
-		     	if (m == null)
-		     	{
-		     		dump("===== Begin content\n\r");
-		     		dump(txt);
-		     		dump("===== End content\n\r");
-		     		throw "Data not found";
-		     	}
-		     	var trafUAIX = new Traffic(m[2], m[3]);
-		     	var trafUAMedia = new Traffic(m[4], m[5]);
-		     	var trafWorld = new Traffic(m[6], m[7]);
-		     }
-		    catch(e){
-		    	AdamantFx.setErrorMessage("badParsing");
-		    	throw e;
-		    }
-		   	var trafIn = trafUAIX.Input+trafWorld.Input,
-		    	trafOut = trafUAIX.Output+trafWorld.Output
-	     	trafIn = Math.floor(trafIn*100)/100;
-	     	trafOut = Math.floor(trafOut*100)/100;
-	     	var lblIn = document.getElementById("afx-trafIn"),
-	     		lblOut = document.getElementById("afx-trafOut");
-	     	lblIn.value = trafIn.toString();
-	     	lblOut.value = trafOut.toString();
-	     	lblIn.className = (trafIn >= trafOut) ? "afx-bold-label" : "afx-simple-label";
-	     	lblOut.className = (trafIn < trafOut) ? "afx-bold-label" : "afx-simple-label";
-	     	
-	     	AdamantFXClearNode(AdamantFx.MyToolTip);
-	     	AdamantFXAddText(AdamantFx.MyToolTip, "UAIX: "+trafUAIX.Input+"/"+trafUAIX.Output);
-	     	AdamantFXAddText(AdamantFx.MyToolTip, "World: "+trafWorld.Input+"/"+trafWorld.Output);
-	     	AdamantFXAddText(AdamantFx.MyToolTip, "UAMedia: "+trafUAMedia.Input+"/"+trafUAMedia.Output);
-	     }
-	     else
-	      dump("Error loading page\n");
-	  	}
-		};
-	   	  	 /*  var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-	    	var username = prefs.getCharPref("extensions.adamantfx.username");
-	    	var password = prefs.getCharPref("extensions.adamantfx.password");*/
-		req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-		req.send("action=traffic&login="+escape(AdamantFx.getUserName())+"&password="+escape(AdamantFx.getPassword()));
-		this.AdamantButton.src = "chrome://adamantfx/content/downind.gif";
+  	  
+  beginRequest : function()
+  {
+  	this.AdamantButton.src = "chrome://adamantfx/content/downind.gif";
   },
-  setErrorMessage: function(msgTitle) {
-  		    this.AdamantButton.src = "chrome://adamantfx/content/questa.gif";
-	    	AdamantFXClearNode(this.MyToolTip);
-			var strbundle=document.getElementById("afx-messErrors");
-			if (!strbundle){throw "Messages not loaded!";}
-			var mess=strbundle.getString(msgTitle);
-			//alert(mess);
-	    	AdamantFXAddText(AdamantFx.MyToolTip, mess);
+  	  
+  endRequest : function(shortText, data)
+  {
+  	  //alert(shortText);
+  	  
+  	  this.ExtensionZone.tooltiptext = shortText;
+  	  this.data = data;
+  	  this.AdamantButton.src = data ? "chrome://adamantfx/content/adlogo.png" : "chrome://adamantfx/content/questa.gif";
+   	if (data)
+   	{
+	   	var trafIn = data.trafIn(),
+	    	trafOut = data.trafOut();
+	 	var lblIn = document.getElementById("afx-trafIn"),
+	 		lblOut = document.getElementById("afx-trafOut");
+	 	lblIn.value = trafIn.toString();
+	 	lblOut.value = trafOut.toString();
+	 	lblIn.className = (trafIn >= trafOut) ? "afx-bold-label" : "afx-simple-label";
+	 	lblOut.className = (trafIn < trafOut) ? "afx-bold-label" : "afx-simple-label";
+ 	}
   },
- 
- timerElapsed: function(obj) {
- 	 dump("timer elapsed");
- 	 obj.reload();
-	},
- createTimer: function(){
- 	if (this.getTimeout() == 0) {dump("Autorefreshing is disabled");return;}
-    dump("Created timer.\n\r");
-    dump("Refresh period: "+this.getTimeout());
-    window.setTimeout(this.timerElapsed, 60000*this.getTimeout(), this);
- },
- 	 getUserName : function(){
- 	 	 return HostController.getUserName();
- 	 },
- 	 getPassword : function(){
- 	 	 return HostController.getPassword();
- 	 },
- 	 getTimeout : function(){
- 	 	 return HostController.getRefreshRate();
- 	 }
+  	  
+  showDetails : function()
+  {
+  	  var file = Components.classes["@mozilla.org/file/directory_service;1"]
+                     .getService(Components.interfaces.nsIProperties)
+                     .get("TmpD", Components.interfaces.nsIFile);
+	file.append("powercab.html");
+	file.createUnique(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 0664);
+  	  
+  	  // file is nsIFile, data is a string
+		var foStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
+		                         .createInstance(Components.interfaces.nsIFileOutputStream);
+
+		// use 0x02 | 0x10 to open file for appending.
+		foStream.init(file, 0x02 | 0x08 | 0x20, 0664, 0); // write, create, truncate
+		var text;
+		if (this.data)
+		{
+			var serializer = new XMLSerializer();
+			text = serializer.serializeToString(this.data.transform("chrome://adamantfx/content/details.xslt"));
+		}
+		else
+		{
+			text = this.ExtensionZone.tooltiptext;
+		}
+		foStream.write(text, text.length);
+		foStream.close();
+  	  
+  	  var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                   .getService(Components.interfaces.nsIWindowMediator);
+	var mainWindow = wm.getMostRecentWindow("navigator:browser");
+	var gBrowser = mainWindow.getBrowser();
+	var infoTab = gBrowser.addTab("file://"+file.path);
+	gBrowser.selectedTab = infoTab;
+  }
 };
 
 window.addEventListener("load", function(e) { AdamantFx.onLoad(e); }, false);
-
-function AdamantFXClearNode(node){
-	while(node.childNodes.length>0){
-		dump("deletion\n\r");
-		node.removeChild(node.firstChild);
-	}
-}
-
-function AdamantFXAddText(node, txt){
-	var label = document.createElement("label");
-  	label.setAttribute("value",txt);
-  	node.appendChild(label);
-}
-
-function Traffic(inp, outp){
-	this.Input = parseFloat(inp);
-	this.Output = parseFloat(outp);
-}

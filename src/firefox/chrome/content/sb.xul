@@ -3,17 +3,22 @@
 <!DOCTYPE dialog SYSTEM "chrome://adamantfx/locale/main.dtd">
 <overlay id="sample" 
 	         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script src="classes/FetchStrategy.js"/>
+	<script src="classes/Fetcher.js"/>
+	<script src="classes/DataContainer.js"/>
+	<script src="classes/Timer.js"/>
 	<script src="classes/HostController.js"/>
+	<script src="classes/PowerCab.js"/>
 	<script src="overlay.js"/>
 	<statusbar id="status-bar">
-	  <statusbarpanel id="afx-panel" class="afx-whole" context="afx-cxmenu" tooltip="afx-tooltip">
+	  <statusbarpanel id="afx-panel" class="afx-whole" context="afx-cxmenu" ondblclick="AdamantFx.showDetails(event)" insertafter="gr-box" tooltiptext="ok">
 	  	<stringbundle id="afx-messErrors" src="chrome://adamantfx/locale/errors.properties"/>
 		<image src="chrome://adamantfx/content/in.gif"/>
 		<label value="NA" id="afx-trafIn" class="afx-simple-label"/>
 		<image src="chrome://adamantfx/content/out.gif"/>
 		<label value="NA" id="afx-trafOut" class="afx-simple-label"/>
-		<image src="chrome://adamantfx/content/adlogo.png" onclick="AdamantFx.reload(event)" id="afx-mainbutton"/>
-		<pupupset>
+		<image src="chrome://adamantfx/content/adlogo.png" onclick="AdamantFx.PowerCab.startRefresh(event)" id="afx-mainbutton"/>
+		<popupset>
 		    <popup id="afx-cxmenu" position="before_end">
 		  		<menuitem
 		  			label="&menu.prefs;"
@@ -25,12 +30,7 @@
 		  			label="&menu.cabinet;"
 		    		oncommand="AdamantFx.goToCabinet(event)"/>
 			</popup>
-			<popup id="afx-tooltip" insertafter="backMenu">
-				<vbox id="afx-tooltip-box">
-					<label value="&tooltip.ready;"/>
-				</vbox>
-			</popup>
-		</pupupset>
+		</popupset>
 	  </statusbarpanel>
 	</statusbar>
 </overlay>

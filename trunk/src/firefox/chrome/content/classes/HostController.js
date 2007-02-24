@@ -44,3 +44,9 @@ var HostController =
  	 	 }
 	}
 }
+
+DataContainer.prototype.dataExists = function() {return this.exists("/opt/g_data");}
+DataContainer.prototype.errorMessage = function(){return this.getXPathFirstValue("/opt/@message");}
+DataContainer.prototype.timestamp = function(){return this.getXPathFirstValue("/opt/g_data/@timestamp");}
+DataContainer.prototype.trafIn = function(){return parseFloat(this.getXPathFirstValue("/opt/traf_cnt[@name=\"total\"]/@rx"));}
+DataContainer.prototype.trafOut = function(){return parseFloat(this.getXPathFirstValue("/opt/traf_cnt[@name=\"total\"]/@tx"));}

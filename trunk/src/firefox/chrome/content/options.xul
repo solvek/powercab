@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <!DOCTYPE dialog SYSTEM "chrome://adamantfx/locale/prefwindow.dtd">
-<prefwindow id="tstPreferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;" height="200px" width="500px">
+<prefwindow id="tstPreferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;" height="200px" width="500px" ondialogaccept="PowerCabOptions.changed(event)">
+	<script src="PowerCabOptions.js"/>
   <prefpane id="pane1" label="Options">
     <preferences>
       <preference id="username" name="extensions.adamantfx.username" type="string"/>

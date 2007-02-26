@@ -5,7 +5,11 @@ function PowerCab(owner)
 	this.startRefresh = function()
 	{
 		this.owner.beginRequest(this);
-		Fetcher.send(this, FetchStrategy.QueryUrl+"?mode=xml&login="+escape(HostController.getUserName())+"&password="+escape(HostController.getPassword()), "", FetchStrategy.getMethodType());
+		Fetcher.send(
+			this, 
+			FetchStrategy.QueryUrl+"?mode=xml&login="+escape(HostController.getUserName())+"&password="+escape(HostController.getPassword()), 
+			"", 
+			FetchStrategy.getMethodType());
 	}
 	
 	this.startTimer = function()

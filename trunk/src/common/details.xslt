@@ -37,6 +37,7 @@
 					</xsl:for-each>
 				</tbody>
 			</table>
+			<h1>Usefull links</h1>
 			<a href="https://cabinet.homenet.adamant.ua/">Cabinet</a><br/>
 			<a href="http://forum.homenet.adamant.ua/">Forum</a><br/>
 			<a href="http://homenet.adamant.ua/">Adamant Homenet</a><br/>

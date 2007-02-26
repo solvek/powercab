@@ -1,59 +1,40 @@
-function PowerCab(owner)
+var PowerCab =
 {
-	this.owner = owner;
+	timer : null,
+		
+	refresher : null,
 	
-	this.startRefresh = function()
+	init : function()
 	{
-		this.owner.beginRequest(this);
-		Fetcher.send(
-			this, 
-			FetchStrategy.QueryUrl+"?mode=xml&login="+escape(HostController.getUserName())+"&password="+escape(HostController.getPassword()), 
-			"", 
-			FetchStrategy.getMethodType());
-	}
+		this.timer = new Timer(this);
+		this.createRefresher();
+		this.startTimer();
+	},
 	
-	this.startTimer = function()
+	startRefresh : function()
 	{
-		//alert(HostController.getRefreshRate());
+		HostController.beginRequest();
+		this.startRefresh2();
+	},
+	
+	startTimer : function()
+	{
 		this.timer.stop();
-		this.timer.start(HostController.getRefreshRate()*60000);
-	}
+		this.timer.start(this.getRefreshRate()*60000);
+	},
 	
-	this.timerElapsed = function(timer)
+	timerElapsed : function()
 	{
 		this.startRefresh();
-	}
+	},
 	
-	this.queryFinished = function(result)
+	queryFinished : function(shortText, data, detailsHtmlText)
 	{
-		//alert(result);
-		var shortText, data = null;
-		if (typeof(result) == "string")
-		{
-			data = FetchStrategy.prepareXml(result);
-			if (!data.dataExists())
-			{
-				shortText = data.errorMessage();
-				data = null;
-			}
-			else
-			{
-				shortText = "Ok. "+data.timestamp();
-			}
-		}
-		else
-		{
-			shortText = result.message;
-		}
-		this.owner.endRequest(shortText, data);
-	};
+		HostController.endRequest(shortText, data, detailsHtmlText);
+	},
 	
-	this.prefferencesChanged = function()
+	prefferencesChanged : function()
 	{
 		this.startTimer();
-	};
-	
-	this.timer = new Timer(this);
-	//this.fetcher = new Fetcher(this, FetchStrategy.QueryUrl, FetchStrategy.getMethodType());
-	this.startTimer();
+	}
 }

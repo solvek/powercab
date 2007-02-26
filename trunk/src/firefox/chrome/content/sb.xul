@@ -3,30 +3,27 @@
 <!DOCTYPE dialog SYSTEM "chrome://adamantfx/locale/main.dtd">
 <overlay id="sample" 
 	         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-	<script src="classes/FetchStrategy.js"/>
-	<script src="classes/Fetcher.js"/>
-	<script src="classes/DataContainer.js"/>
 	<script src="classes/Timer.js"/>
-	<script src="classes/HostController.js"/>
 	<script src="classes/PowerCab.js"/>
-	<script src="overlay.js"/>
+	<script src="classes/Refresher.js"/>
+	<script src="classes/HostController.js"/>
 	<statusbar id="status-bar">
-	  <statusbarpanel id="afx-panel" class="afx-whole" context="afx-cxmenu" ondblclick="AdamantFx.showDetails(event)" insertafter="gr-box" tooltiptext="ok">
+	  <statusbarpanel id="afx-panel" class="afx-whole" context="afx-cxmenu" ondblclick="HostController.showDetails(event)" insertafter="gr-box" tooltiptext="ok">
 	  	<stringbundle id="afx-messErrors" src="chrome://adamantfx/locale/errors.properties"/>
 		<image src="chrome://adamantfx/content/in.gif"/>
 		<label value="NA" id="afx-trafIn" class="afx-simple-label"/>
 		<image src="chrome://adamantfx/content/out.gif"/>
 		<label value="NA" id="afx-trafOut" class="afx-simple-label"/>
-		<image src="chrome://adamantfx/content/adlogo.png" onclick="AdamantFx.PowerCab.startRefresh(event)" id="afx-mainbutton"/>
+		<image src="chrome://adamantfx/content/adlogo.png" onclick="PowerCab.startRefresh(event)" id="afx-mainbutton"/>
 		<popupset>
 		    <popup id="afx-cxmenu" position="before_end">
 		  		<menuitem
 		  			label="&menu.details;"
-		    		oncommand="AdamantFx.showDetails(event)"
+		    		oncommand="HostController.showDetails(event)"
 		    		class="afx-bold-label"/>
 		  		<menuitem
 		  			label="&menu.prefs;"
-		    		oncommand="AdamantFx.showOptions(event)"/>
+		    		oncommand="HostController.showOptions(event)"/>
 			</popup>
 		</popupset>
 	  </statusbarpanel>

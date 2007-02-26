@@ -21,7 +21,7 @@
    </em:targetApplication>
    
     <em:name>PowerCab FX</em:name>
-    <em:description>Extension especially for Adamant's homenet users</em:description>
+    <em:description>Extension pretty displays traffics for Adamant's homenet users</em:description>
     <em:creator>Sergi Adamchuk</em:creator>
     <em:homepageURL>http://code.google.com/p/powercab/</em:homepageURL>
     <em:updateURL>http://powercab.googlecode.com/files/pc_fxupd.rdf</em:updateURL>

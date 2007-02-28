@@ -1,4 +1,4 @@
-var HostController = 
+﻿var HostController = 
 {
 	preferences : Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
 		
@@ -32,6 +32,8 @@ var HostController =
   	  
   endRequest : function(shortText, data, detailsHtmlText)
   {
+  	detailsHtmlText = "Деякий текcт";
+  	alert(detailsHtmlText);
 	if (!detailsHtmlText)
 	{
 		detailsHtmlText = "No additional information available";
@@ -74,7 +76,7 @@ var HostController =
   	
   	if (!this.infoTab)
   	{
-		this.infoTab = this.gBrowser.addTab("file://"+this.file.path);
+		this.infoTab = this.gBrowser.addTab(this.getDetailsFileUri());
 	}
 	this.gBrowser.selectedTab = this.infoTab;
   },
@@ -117,6 +119,11 @@ var HostController =
  	 	 {
  	 	 	 return defVal;
  	 	 }
+	},
+		
+	getDetailsFileUri : function()
+	{
+		return this.file ? "file://"+this.file.path : null;
 	},
 		
 	createHttpRequest : function()

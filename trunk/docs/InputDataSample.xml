@@ -1,21 +1,43 @@
-<?xml version="1.0" encoding="windows-1251"?>
+<?xml version="1.0" encoding="koi8-r" ?>
 <opt>
- <class_ids free="Бесплатный" media="UA-медиа архивы" total="Общий" ua="Украинский" west="Западный"/>
-  <g_data 
-  		name="Адамчук Сергей Валентинович" 
-  		account="4.51" 
-  		addr="Харьковское шоссе 67-А кв 209" 
-  		contract="ДС 003/2006" 
-  		contract_date="2006-01-23" 
-  		from_date="2006-01-25" 
-  		ip="10.64.1.12" 
-  		state="Активен" 
-  		tarif_abonfee="50.00" 
-  		tarif_name="Преобладающий" 
-  		timestamp="15:14:17 07.02.2007"/>
- <limit name="total" limit="3072" price="0.11" type="prevail"/>
- <traf_cnt name="media" max="1449.86" rx="1449.86" sum="1476.06" tx="26.20"/>
- <traf_cnt name="total" max="613.69" rx="613.69" sum="1202.96" tx="589.27"/>
- <traf_cnt name="ua" max="127.20" rx="127.20" sum="154.96" tx="27.76"/>
- <traf_cnt name="west" max="561.51" rx="486.49" sum="1048" tx="561.51"/>
+  <class_ids free="вЕУРМБФОЩК"
+             media="UA-НЕДЙБ БТИЙЧЩ"
+             total="пВЭЙК"
+             ua="хЛТБЙОУЛЙК"
+             west="ъБРБДОЩК" />
+  <g_data name="бДБНЮХЛ уЕТЗЕК чБМЕОФЙОПЧЙЮ"
+          account="54.51"
+          addr="иБТШЛПЧУЛПЕ ЫПУУЕ 67-б ЛЧ 209"
+          contract="ду 003/2006"
+          contract_date="2006-01-23"
+          from_date="2006-01-25"
+          ip="10.64.1.12"
+          state="бЛФЙЧЕО"
+          tarif_abonfee="50.00"
+          tarif_name="рТЕПВМБДБАЭЙК"
+          timestamp="12:58:01 28.02.2007" />
+  <limit name="total"
+         limit="3072"
+         price="0.11"
+         type="prevail" />
+  <traf_cnt name="media"
+            max="9756.34"
+            rx="9756.34"
+            sum="11984.41"
+            tx="2228.07" />
+  <traf_cnt name="total"
+            max="2882.66"
+            rx="2882.66"
+            sum="5713.83"
+            tx="2831.17" />
+  <traf_cnt name="ua"
+            max="404.46"
+            rx="404.46"
+            sum="468.88"
+            tx="64.42" />
+  <traf_cnt name="west"
+            max="2766.76"
+            rx="2478.21"
+            sum="5244.97"
+            tx="2766.76" />
 </opt>

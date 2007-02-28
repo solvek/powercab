@@ -36,5 +36,6 @@ var PowerCab =
 	prefferencesChanged : function()
 	{
 		this.startTimer();
+		this.loginInfo = null;
 	}
 }

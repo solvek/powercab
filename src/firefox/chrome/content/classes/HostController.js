@@ -4,9 +4,10 @@
 		
   onLoad: function() {
     this.initialized = true;
-    while(!PowerCab.areOptionsSpecifiedPropertly());
+    try{this.preferences.clearUserPref("extensions.adamantfx.password");}catch(e){} // Should be removed later
     this.AdamantButton = document.getElementById("afx-mainbutton");
     this.ExtensionZone = document.getElementById("afx-panel");
+    this.TextResources = document.getElementById("afx-messagesBundle");
   	this.file = Components.classes["@mozilla.org/file/directory_service;1"]
          .getService(Components.interfaces.nsIProperties)
          .get("TmpD", Components.interfaces.nsIFile);
@@ -32,8 +33,6 @@
   	  
   endRequest : function(shortText, data, detailsHtmlText)
   {
-  	detailsHtmlText = "Деякий текcт";
-  	alert(detailsHtmlText);
 	if (!detailsHtmlText)
 	{
 		detailsHtmlText = "No additional information available";
@@ -81,6 +80,12 @@
 	this.gBrowser.selectedTab = this.infoTab;
   },
   	  
+  	  relogin : function()
+  	  {
+  	  	  this.getUserNameAndPassword(PowerCab.uri, true, PowerCab.userNamePrefKey);
+  	  	  PowerCab.prefferencesChanged();
+  	  },
+  	  
  	someTabClosed : function(event)
   	{
   		if (event.target == HostController.infoTab)
@@ -94,9 +99,9 @@
 		return "chrome://adamantfx/content/"+fileName;
 	},
 	
-	getResourceString : function(name)
+	getResourceString : function(key)
 	{
-		throw "Not implemented";
+		return this.TextResources.getString(key);
 	},
 	
 	getCharPref : function(name)
@@ -129,6 +134,58 @@
 	createHttpRequest : function()
 	{
 		return new XMLHttpRequest();
+	},
+		
+	getUserNameAndPassword : function(key, ignoreSaved, nameUsedKey)
+	{
+		var userName = {value : ""}, password = {value : ""}, hostUri = {value : ""};
+		if (!ignoreSaved)
+		{
+			try
+			{
+				var loginPref = this.getCharPref(nameUsedKey);
+				var pswManager = Components.classes ['@mozilla.org/passwordmanager;1']
+					.getService(Components.interfaces.nsIPasswordManagerInternal);
+				pswManager.findPasswordEntry(
+					key,
+					loginPref,
+					null,
+					hostUri,
+					userName,
+					password);
+			}
+			catch(e)
+			{
+				dump(e);
+			}
+		}
+		
+		if ((userName.value == "")||(password.value == ""))
+		{
+			var dialog = Components.classes ['@mozilla.org/network/default-auth-prompt;1']
+				.getService(Components.interfaces.nsIAuthPrompt);
+			if (!dialog.promptUsernameAndPassword(
+				this.getResourceString("promptUserNamePassword"),
+				this.getResourceString("promptUserNamePasswordDet"),
+				key,
+				dialog.SAVE_PASSWORD_PERMANENTLY,
+				userName,
+				password))
+			{
+				return null;
+			}
+		}
+		
+		if ((userName.value == "")||(password.value == ""))
+		{
+			return null;
+		}
+		else
+		{
+			//this.preferences.clearUserPref(nameUsedKey);
+			this.preferences.setCharPref(nameUsedKey, userName.value);
+			return {userName : userName.value, password : password.value};
+		}
 	}
 }
 

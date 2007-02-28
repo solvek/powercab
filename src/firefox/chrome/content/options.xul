@@ -6,7 +6,6 @@
   <prefpane id="pane1" label="Options">
     <preferences>
       <preference id="username" name="extensions.adamantfx.username" type="string"/>
-      <preference id="password" name="extensions.adamantfx.password" type="string"/>
       <preference id="timeout" name="extensions.adamantfx.timeout" type="int"/>
     </preferences>
     <vbox>
@@ -15,12 +14,6 @@
 	    <textbox
 	    	id="inpusername" 
 	    	preference="username"/>
-	    <label 
-	    	control="inppassword">&intpref.password;</label>
-	    <textbox
-	    	id="inppassword" 
-	    	preference="password"
-	    	type="password"/>
 	    <label 
 	    	control="timeout">&intpref.refrperiod;</label>
 	    <textbox

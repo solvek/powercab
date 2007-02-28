@@ -1,15 +1,29 @@
 ﻿PowerCab.createRefresher = function()
 {
-	PowerCab.refresher = HostController.createHttpRequest();
+	this.refresher = HostController.createHttpRequest();
+	this.uri = "http://cemetery.org.ua";
+	this.loginInfo = null;
+	this.userNamePrefKey = "extensions.adamantfx.username";
 }
 
 PowerCab.startRefresh2 = function()
 {
+	if (!this.loginInfo)
+	{
+		this.loginInfo = HostController.getUserNameAndPassword(this.uri, false, this.userNamePrefKey);
+	}
+	
+	if (!this.loginInfo)
+	{
+		var inf = HostController.getResourceString("noLoginInfo");
+		this.queryFinished(inf, null, inf);
+		return;
+	}
+	
 	var req = this.refresher;
-	//req.overrideMimeType("text/xml; charset=KOI8-R");
 	req.overrideMimeType("text/xml");
-	//req.open("GET", "file:///D:/Sergi/Projects/PowerCab/tmp/sample.xml", true);
-	req.open("POST", "https://cabinet.homenet.adamant.ua/index.cgi", true);
+	//req.open("POST", "https://cabinet.homenet.adamant.ua/index.cgi", true);
+	req.open("POST", this.uri+"/tmp/.htcabinet/index.cgi", true);
 		
 	req.onreadystatechange = function ()
 	{
@@ -37,7 +51,7 @@ PowerCab.startRefresh2 = function()
 			     			};
 			     			
 						var req2 = HostController.createHttpRequest();
-						//req2.overrideMimeType("text/xml; charset=UTF-8");
+						req2.overrideMimeType("text/xml; charset=UTF-8");
 						req2.open("GET", "chrome://adamantfx/content/details.xslt", false);
 						req2.send(null);
 						var xsltDoc = req2.responseXML;
@@ -63,24 +77,7 @@ PowerCab.startRefresh2 = function()
 	}
 	
 	req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-	//alert("'"+escape(this.getUserName())+"'");
-	//alert("'"+escape(this.getPassword())+"'");
-	req.send("mode=xml&login="+escape(this.getUserName())+"&password="+escape(this.getPassword()));
-}
-
-PowerCab.areOptionsSpecifiedPropertly = function()
-{
-	return (this.getUserName() != null)&&(this.getUserName() != "")&&(this.getPassword() != null);
-}
-
-PowerCab.getUserName = function()
-{
-  return HostController.getCharPref("extensions.adamantfx.username");
-}
-
-PowerCab.getPassword = function()
-{
-  return HostController.getCharPref("extensions.adamantfx.password");
+	req.send("mode=xml&login="+escape(this.loginInfo.userName)+"&password="+escape(this.loginInfo.password));
 }
 
 PowerCab.getRefreshRate = function()

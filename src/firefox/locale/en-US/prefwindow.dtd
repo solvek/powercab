@@ -1,4 +1,3 @@
-﻿<!ENTITY prefwindow.title "Preferences for Adamant F.X.">
+﻿<!ENTITY prefwindow.title "Preferences for PowerCab F.X.">
 <!ENTITY intpref.username "Username:">
-<!ENTITY intpref.password "Password:">
 <!ENTITY intpref.refrperiod "Refresh period (minutes):">

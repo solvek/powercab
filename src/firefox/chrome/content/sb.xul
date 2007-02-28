@@ -9,7 +9,7 @@
 	<script src="classes/HostController.js"/>
 	<statusbar id="status-bar">
 	  <statusbarpanel id="afx-panel" class="afx-whole" context="afx-cxmenu" ondblclick="HostController.showDetails(event)" insertafter="gr-box" tooltiptext="ok">
-	  	<stringbundle id="afx-messErrors" src="chrome://adamantfx/locale/errors.properties"/>
+	  	<stringbundle id="afx-messagesBundle" src="chrome://adamantfx/locale/messages.properties"/>
 		<image src="chrome://adamantfx/content/in.gif"/>
 		<label value="NA" id="afx-trafIn" class="afx-simple-label"/>
 		<image src="chrome://adamantfx/content/out.gif"/>
@@ -24,6 +24,9 @@
 		  		<menuitem
 		  			label="&menu.prefs;"
 		    		oncommand="HostController.showOptions(event)"/>
+		  		<menuitem
+		  			label="&menu.anotherUser;"
+		    		oncommand="HostController.relogin(event)"/>
 			</popup>
 		</popupset>
 	  </statusbarpanel>

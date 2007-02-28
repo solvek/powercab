@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes"/>
 	<xsl:template match="/opt">
@@ -7,7 +7,7 @@
 				<title>PowerCab: Detailed information</title>
 			</head>
 			<body>
-			<h1>General Information</h1>
+			<h1>Загальна інформація</h1>
 			<table border="2">
 				<tbody>
 					<tr>
@@ -16,11 +16,15 @@
 					</tr>
 					<tr>
 						<td><b>Traffic limit</b></td>
-						<td><xsl:value-of select="g_data/limit/@limit"/></td>
+						<td><xsl:value-of select="limit/@limit"/></td>
 					</tr>
 					<tr>
 						<td><b>Type</b></td>
-						<td><xsl:value-of select="g_data/limit/@type"/></td>
+						<td><xsl:value-of select="limit/@type"/></td>
+					</tr>
+					<tr>
+						<td><b>Абонент</b></td>
+						<td><xsl:value-of select="g_data/@name"/></td>
 					</tr>
 					<tr>
 						<td><b>Time actuality</b></td>

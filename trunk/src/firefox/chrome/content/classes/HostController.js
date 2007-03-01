@@ -31,13 +31,8 @@
   	this.AdamantButton.src = "chrome://adamantfx/content/downind.gif";
   },
   	  
-  endRequest : function(shortText, data, detailsHtmlText)
+  endRequest : function(shortText, data, htmlDocument)
   {
-	if (!detailsHtmlText)
-	{
-		detailsHtmlText = "No additional information available";
-	}
-	
 	this.ExtensionZone.tooltipText = shortText;
   	this.AdamantButton.src = data ? "chrome://adamantfx/content/adlogo.png" : "chrome://adamantfx/content/questa.gif";
   	
@@ -47,7 +42,9 @@
 
 	// use 0x02 | 0x10 to open file for appending.
 	foStream.init(this.file, 0x02 | 0x08 | 0x20, 0664, 0); // write, create, truncate
-	foStream.write(detailsHtmlText, detailsHtmlText.length);
+	var serializer = new XMLSerializer();
+	serializer.serializeToStream(htmlDocument, foStream, "UTF-8");
+	//foStream.write(detailsHtmlText, detailsHtmlText.length);
 	foStream.close();
 	
 	if (this.infoTab)
@@ -96,7 +93,7 @@
 	
 	buildFullUrl : function(fileName)
 	{
-		return "chrome://adamantfx/content/"+fileName;
+		return "chrome://adamantfx/"+fileName;
 	},
 	
 	getResourceString : function(key)
@@ -134,6 +131,11 @@
 	createHttpRequest : function()
 	{
 		return new XMLHttpRequest();
+	},
+		
+	createDomParser : function()
+	{
+		return new DOMParser();
 	},
 		
 	getUserNameAndPassword : function(key, ignoreSaved, nameUsedKey)

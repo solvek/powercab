@@ -5,7 +5,11 @@ var infoXml = loadXmlDocument('../src/common/Info.xml');
 // Synchronization process
 syncFiles("../src/common/PowerCab.js", "../src/firefox/chrome/content/classes/PowerCab.js");
 syncFiles("../src/common/adamant/Refresher.js", "../src/firefox/chrome/content/classes/Refresher.js");
-syncFiles("../src/common/adamant/details.xslt", "../src/firefox/chrome/content/details.xslt");
+syncFiles("../src/common/adamant/DetTemplateEN.htm", "../src/firefox/locale/en-US/DetTemplate.htm");
+syncFiles("../src/common/adamant/DetTemplateUK.htm", "../src/firefox/locale/uk-UA/DetTemplate.htm");
+syncFiles("../src/common/adamant/detailsEN.xslt", "../src/firefox/locale/en-US/details.xslt");
+syncFiles("../src/common/adamant/detailsUK.xslt", "../src/firefox/locale/uk-UA/details.xslt");
+
 
 var curTextFile = new FileModifier("../src/firefox/install.rdf");
 curTextFile.changeValue("$1"+getXmlValue("/*/version")+"$3", new RegExp("(<em:version>)([^<]*)(</em:version>)", "m"));

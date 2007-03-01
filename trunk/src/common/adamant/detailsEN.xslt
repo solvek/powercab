@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes"/>
+	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	<xsl:template match="/opt">
-		<html>
-			<head>
-				<title>PowerCab: Detailed information</title>
-			</head>
-			<body>
-			<h1>Загальна інформація</h1>
+		<div>
+			<h1>General information</h1>
 			<table border="2">
 				<tbody>
 					<tr>
+						<td><b>Abonent</b></td>
+						<td><xsl:value-of select="g_data/@name"/></td>
+					</tr>
+					<tr>
 						<td><b>Balance</b></td>
 						<td><xsl:value-of select="g_data/@account"/></td>
+					</tr>
+					<tr>
+						<td><b>Status</b></td>
+						<td><xsl:value-of select="g_data/@state"/></td>
+					</tr>
+					<tr>
+						<td><b>Type</b></td>
+						<td><xsl:value-of select="g_data/@tarif_name"/></td>
 					</tr>
 					<tr>
 						<td><b>Traffic limit</b></td>
 						<td><xsl:value-of select="limit/@limit"/></td>
 					</tr>
 					<tr>
-						<td><b>Type</b></td>
-						<td><xsl:value-of select="limit/@type"/></td>
-					</tr>
-					<tr>
-						<td><b>Абонент</b></td>
-						<td><xsl:value-of select="g_data/@name"/></td>
+						<td><b>Month payment</b></td>
+						<td><xsl:value-of select="g_data/@tarif_abonfee"/></td>
 					</tr>
 					<tr>
 						<td><b>Time actuality</b></td>
@@ -39,21 +43,23 @@
 						<td><b>Direction</b></td>
 						<td><b>Input</b></td>
 						<td><b>Output</b></td>
+						<td><b>Total</b></td>
 					</tr>
 					<xsl:for-each select="traf_cnt">
 						<tr>
-							<td><xsl:value-of select="@name"/></td>
+							<td>
+								<xsl:choose>
+									<xsl:when test="@title"><xsl:value-of select="@title"/></xsl:when>
+									<xsl:otherwise><xsl:value-of select="@name"/></xsl:otherwise>
+								</xsl:choose>
+							</td>
 							<td><xsl:value-of select="@rx"/></td>
 							<td><xsl:value-of select="@tx"/></td>
+							<td><xsl:value-of select="@sum"/></td>
 						</tr>
 					</xsl:for-each>
 				</tbody>
 			</table>
-			<h1>Usefull links</h1>
-			<a href="https://cabinet.homenet.adamant.ua/">Кабінет</a><br/>
-			<a href="http://forum.homenet.adamant.ua/">Forum</a><br/>
-			<a href="http://homenet.adamant.ua/">Adamant Homenet</a><br/>
-			</body>
-		</html>
+		</div>
 	</xsl:template>
 </xsl:stylesheet>

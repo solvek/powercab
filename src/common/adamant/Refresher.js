@@ -1,9 +1,10 @@
 ﻿PowerCab.createRefresher = function()
 {
-	this.refresher = HostController.createHttpRequest();
+	//this.refresher = HostController.createHttpRequest();
 	this.uri = "http://cemetery.org.ua";
 	this.loginInfo = null;
 	this.userNamePrefKey = "extensions.adamantfx.username";
+	this.refreshRatePrefKey = "extensions.adamantfx.timeout";
 }
 
 PowerCab.startRefresh2 = function()
@@ -20,10 +21,11 @@ PowerCab.startRefresh2 = function()
 		return;
 	}
 	
-	var req = this.refresher;
+	var req = this.refresher = HostController.createHttpRequest();
 	req.overrideMimeType("text/xml");
 	//req.open("POST", "https://cabinet.homenet.adamant.ua/index.cgi", true);
 	req.open("POST", this.uri+"/tmp/.htcabinet/index.cgi", true);
+	req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 		
 	req.onreadystatechange = function ()
 	{
@@ -33,17 +35,28 @@ PowerCab.startRefresh2 = function()
 			  {
 			  	 var shortText = null;
 			  	 var data = null;
-		     	 var detailsHtmlText = null;
+		     	 var htmlDocument = null;
 			     if((PowerCab.refresher.status == 200)||(PowerCab.refresher.status == 0))
 			     {
 			     	//var txt = PowerCab.refresher.responseText;
 			     	var xml = PowerCab.refresher.responseXML;
 			     	if (xml.selectSingleNode("/opt/g_data") == null)
 			     	{
-			     		detailsHtmlText = shortText = xml.selectSingleNode("/opt/@message").nodeValue;
+			     		shortText = xml.selectSingleNode("/opt/@message").nodeValue;
 			     	}
 			     	else
 			     	{
+			     		var titleNodes = xml.selectSingleNode("/opt/class_ids");
+			     		for(var i=0;titleNodes&&(i<titleNodes.attributes.length);i++)
+			     		{
+			     			var trafNode = xml.selectSingleNode("/opt/traf_cnt[@name='"+titleNodes.attributes[i].localName +"']");
+			     			if (trafNode)
+			     			{
+			     				trafNode.setAttribute("title", titleNodes.attributes[i].nodeValue);
+			     				//alert(trafNode.contentText);
+			     			}
+			     		}
+			     		
 			     		shortText = "Ok. "+xml.selectSingleNode("/opt/g_data/@timestamp").nodeValue;
 			     		data = {
 			     			trafIn : parseFloat(xml.selectSingleNode("/opt/traf_cnt[@name=\"total\"]/@rx").nodeValue),
@@ -52,35 +65,32 @@ PowerCab.startRefresh2 = function()
 			     			
 						var req2 = HostController.createHttpRequest();
 						req2.overrideMimeType("text/xml; charset=UTF-8");
-						req2.open("GET", "chrome://adamantfx/content/details.xslt", false);
+						req2.open("GET", HostController.buildFullUrl("locale/details.xslt"), false);
 						req2.send(null);
 						var xsltDoc = req2.responseXML;
-						//alert(xsltDoc.childNodes[0].childNodes[3].childNodes[1].childNodes[3].childNodes[11].textContent);
-						/*var xsltDoc = document.implementation.createDocument("", "", null);
-						xsltDoc.load("chrome://adamantfx/content/details.xslt");*/
 						var transformed = xml.transformNode(xsltDoc);
-			     		detailsHtmlText = transformed.documentElement.innerHTML;
+			     		//htmlDocument = transformed.documentElement.innerHTML;
+			     		htmlDocument = transformed;
 			     	}
 			     }
 			     else
 			     {
-			     	detailsHtmlText = shortText =  "Error loading data";
+			     	shortText =  "Error loading data";
 			     }
-			     PowerCab.queryFinished(shortText, data, detailsHtmlText);
+			     PowerCab.queryFinished(shortText, data, htmlDocument);
 			  }
 		 }
 		 catch(e)
 		 {
 		 	 var err =  "Error: "+e.message;
-		 	 PowerCab.queryFinished(err, null, err);
+		 	 PowerCab.queryFinished(err, null, null);
 		 }
-	}
+	};
 	
-	req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 	req.send("mode=xml&login="+escape(this.loginInfo.userName)+"&password="+escape(this.loginInfo.password));
 }
 
 PowerCab.getRefreshRate = function()
 {
-  return HostController.getIntPref("extensions.adamantfx.timeout", 15);
+  return HostController.getIntPref(this.refreshRatePrefKey, 15);
 }

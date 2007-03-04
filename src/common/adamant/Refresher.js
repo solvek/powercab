@@ -1,7 +1,7 @@
 ﻿PowerCab.createRefresher = function()
 {
 	//this.refresher = HostController.createHttpRequest();
-	this.uri = "http://cemetery.org.ua";
+	this.uri = "https://cabinet.homenet.adamant.ua";
 	this.loginInfo = null;
 	this.userNamePrefKey = "extensions.adamantfx.username";
 	this.refreshRatePrefKey = "extensions.adamantfx.timeout";
@@ -23,8 +23,7 @@ PowerCab.startRefresh2 = function()
 	
 	var req = this.refresher = HostController.createHttpRequest();
 	req.overrideMimeType("text/xml");
-	//req.open("POST", "https://cabinet.homenet.adamant.ua/index.cgi", true);
-	req.open("POST", this.uri+"/tmp/.htcabinet/index.cgi", true);
+	req.open("POST", this.uri, true);
 	req.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 		
 	req.onreadystatechange = function ()

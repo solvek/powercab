@@ -1,0 +1,9 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+	<ShortName>Adamant-Shara</ShortName>
+	<Description>Пошук у шарових ресурсах домосітчан</Description>
+	<InputEncoding>UTF-8</InputEncoding>
+	<Image width="16" height="16">data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAAK%2FINwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAkUExURVrH%2Fm%2FO%2FY%2FX%2B0hpeWSSqHyxyX%2FS%2B9bn7i4uLv%2F%2F%2F%2FP4%2BiYmJgcNPdIAAABjSURBVHjabI7RDoAgDAM71jHQ%2F%2F9fixgDxntaL0cCABAf2lf4tszMbeFPsHHeFIYa3jzqgC5Qa7S5JdJzF6MoRaLczGITaxHBrQjmcSTfQjuydxkU6mPa%2FTHQy9OHmIaXAAMAQFcDaZvl0MMAAAAASUVORK5CYII%3D</Image>
+	<Url type="text/html" method="GET" template="http://www.google.com/custom?cx=002822129208198935010%3Az20a1lwentk&amp;q={searchTerms}&amp;sa=Search&amp;cof=GFNT%3A%23666666%3BLH%3A32%3BCX%3AAdamant%2520Homenet%3BDIV%3A%23cccccc%3BFORID%3A1%3BS%3Ahttp%3A%2F%2Fwww%2Egoogle%2Ecom%2Fcoop%2Fcse%3Fcx%3D002822129208198935010%253Az20a1lwentk%3BL%3Ahttp%3A%2F%2Fwww%2Ehomenet%2Eadamant%2Eua%2Fimg%2Flogo%2Egif%3BLP%3A1%3BAH%3Aleft&amp;hl=ru&amp;client=pub-8865856783388711&amp;channel=9967892455"/>
+	<moz:SearchForm>http://darnytsya.googlepages.com/</moz:SearchForm>
+</OpenSearchDescription>

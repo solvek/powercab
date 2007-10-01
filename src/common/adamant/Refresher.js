@@ -1,7 +1,7 @@
 ﻿PowerCab.createRefresher = function()
 {
 	//this.refresher = HostController.createHttpRequest();
-	this.uri = "https://cabinet.homenet.adamant.ua/extension";
+	this.uri = "https://cabinet.homenet.adamant.ua/extension/";
 	this.loginInfo = null;
 	this.userNamePrefKey = "extensions.adamantfx.username";
 	this.refreshRatePrefKey = "extensions.adamantfx.timeout";
@@ -37,7 +37,8 @@ PowerCab.startRefresh2 = function()
 		     	 var htmlDocument = null;
 			     if((PowerCab.refresher.status == 200)||(PowerCab.refresher.status == 0))
 			     {
-			     	//var txt = PowerCab.refresher.responseText;
+			     	/*var txt = PowerCab.refresher.responseText;
+			     	alert(txt);*/
 			     	var xml = PowerCab.refresher.responseXML;
 			     	if (xml.selectSingleNode("/opt/g_data") == null)
 			     	{

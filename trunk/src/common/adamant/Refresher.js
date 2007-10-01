@@ -1,7 +1,7 @@
 ﻿PowerCab.createRefresher = function()
 {
 	//this.refresher = HostController.createHttpRequest();
-	this.uri = "https://cabinet.homenet.adamant.ua";
+	this.uri = "https://cabinet.homenet.adamant.ua/extension";
 	this.loginInfo = null;
 	this.userNamePrefKey = "extensions.adamantfx.username";
 	this.refreshRatePrefKey = "extensions.adamantfx.timeout";

@@ -24,6 +24,6 @@
     <em:description>Extension pretty displays traffics for Adamant's homenet users</em:description>
     <em:creator>Sergi Adamchuk</em:creator>
     <em:homepageURL>http://code.google.com/p/powercab/</em:homepageURL>
-    <em:updateURL>http://powercab.googlecode.com/files/pc_fxupd.rdf</em:updateURL>
+    <em:updateURL>http://powercab.googlecode.com/svn/trunk/output/pc_fxupd.rdf</em:updateURL>
   </Description>      
 </RDF>

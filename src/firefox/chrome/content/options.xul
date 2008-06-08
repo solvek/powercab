@@ -5,8 +5,6 @@
 	id="tstPreferences" 
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
 	title="&prefwindow.title;" 
-	height="280px" 
-	width="260px" 
 	ondialogaccept="PowerCabOptions.changed(event)"
 	onload="PowerCabOptions.onload(event)">
 	<script src="PowerCabOptions.js"/>

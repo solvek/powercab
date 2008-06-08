@@ -11,7 +11,7 @@
 	<statusbar id="status-bar">
 	  <statusbarpanel id="afx-panel" class="afx-whole" context="afx-cxmenu" ondblclick="HostController.showDetails(event)" insertafter="gr-box" tooltiptext="ok">
 	  	<stringbundle id="afx-messagesBundle" src="chrome://adamantfx/locale/messages.properties"/>
-		<box id="powercab-indices" orient="horizontal">
+		<box id="powercab-indices" orient="horizontal" align="start">
 			<label value="&indices.loading;"/>
 		</box>
 		<image src="chrome://adamantfx/content/adlogo.png" onclick="PowerCab.startRefresh(event)" id="afx-mainbutton"/>

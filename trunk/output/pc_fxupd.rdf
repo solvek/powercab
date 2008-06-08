@@ -1,14 +1,14 @@
 <RDF:RDF xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
           xmlns:em="http://www.mozilla.org/2004/em-rdf#">
    <RDF:Description RDF:about="urn:mozilla:extension:{D3B5C0C7-669F-4646-9367-E83664AEABDB}">
-    <em:version>0.2</em:version>
+    <em:version>1.0</em:version>
     <em:targetApplication>
      <!-- Firefox -->
      <RDF:Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
         <em:minVersion>1.5</em:minVersion>
-        <em:maxVersion>2.0.0.*</em:maxVersion>
-        <em:updateLink>http://powercab.googlecode.com/files/powercab.fx.0.2.1.beta.xpi</em:updateLink>
+        <em:maxVersion>3.0.*</em:maxVersion>
+        <em:updateLink>http://powercab.googlecode.com/files/powercab.fx.1.0.xpi</em:updateLink>
       </RDF:Description>
     </em:targetApplication>
    </RDF:Description>

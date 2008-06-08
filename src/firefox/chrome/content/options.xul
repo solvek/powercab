@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <!DOCTYPE dialog SYSTEM "chrome://adamantfx/locale/prefwindow.dtd">
-<prefwindow id="tstPreferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;" height="200px" width="500px" ondialogaccept="PowerCabOptions.changed(event)">
+<prefwindow 
+	id="tstPreferences" 
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+	title="&prefwindow.title;" 
+	height="280px" 
+	width="260px" 
+	ondialogaccept="PowerCabOptions.changed(event)"
+	onload="PowerCabOptions.onload(event)">
 	<script src="PowerCabOptions.js"/>
   <prefpane id="pane1" label="Options">
     <preferences>
@@ -18,7 +25,16 @@
 	    	control="timeout">&intpref.refrperiod;</label>
 	    <textbox
 	    	id="timeout" 
-	    	preference="timeout"/>	    	
+	    	preference="timeout"/>
+	    <groupbox>
+	    	<caption label="&intpref.indices;"/>
+		    <grid id="powercab-options-indices">
+			    <columns>
+			    </columns>
+			    <rows>
+			    </rows>
+		  	</grid>
+	  	</groupbox>
     </vbox>
   </prefpane>
 </prefwindow>

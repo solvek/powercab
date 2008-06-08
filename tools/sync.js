@@ -5,6 +5,7 @@ var infoXml = loadXmlDocument('../src/common/Info.xml');
 // Synchronization process
 syncFiles("../src/common/PowerCab.js", "../src/firefox/chrome/content/classes/PowerCab.js");
 syncFiles("../src/common/adamant/Refresher.js", "../src/firefox/chrome/content/classes/Refresher.js");
+syncFiles("../src/common/adamant/Indices.js", "../src/firefox/chrome/content/classes/Indices.js");
 syncFiles("../src/common/adamant/DetTemplateEN.htm", "../src/firefox/locale/en-US/DetTemplate.htm");
 syncFiles("../src/common/adamant/DetTemplateUK.htm", "../src/firefox/locale/uk-UA/DetTemplate.htm");
 syncFiles("../src/common/adamant/detailsEN.xslt", "../src/firefox/locale/en-US/details.xslt");

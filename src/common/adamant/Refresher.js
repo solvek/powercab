@@ -1,10 +1,11 @@
 ﻿PowerCab.createRefresher = function()
 {
 	//this.refresher = HostController.createHttpRequest();
-	this.uri = "https://cabinet.homenet.adamant.ua/extension/";
+	this.uri = "https://cabinet.homenet.adamant.net/extension/";
 	this.loginInfo = null;
 	this.userNamePrefKey = "extensions.adamantfx.username";
 	this.refreshRatePrefKey = "extensions.adamantfx.timeout";
+	this.indicesMaskPrefKey = "extensions.adamantfx.indicesMask";
 }
 
 PowerCab.startRefresh2 = function()
@@ -53,14 +54,17 @@ PowerCab.startRefresh2 = function()
 			     			if (trafNode)
 			     			{
 			     				trafNode.setAttribute("title", titleNodes.attributes[i].nodeValue);
-			     				//alert(trafNode.contentText);
 			     			}
 			     		}
 			     		
 			     		shortText = "Ok. "+xml.selectSingleNode("/opt/g_data/@timestamp").nodeValue;
 			     		data = {
-			     			trafIn : parseFloat(xml.selectSingleNode("/opt/traf_cnt[@name=\"total\"]/@rx").nodeValue),
-			     			trafOut : parseFloat(xml.selectSingleNode("/opt/traf_cnt[@name=\"total\"]/@tx").nodeValue)
+				     			_xml : xml,
+				     			getValue : function(p){
+				     				var node = this._xml.selectSingleNode(p);
+				     				if (!node) throw "Failed to find node "+p
+				     				return node.nodeValue;
+				     			}
 			     			};
 			     			
 						var req2 = HostController.createHttpRequest();
@@ -93,4 +97,9 @@ PowerCab.startRefresh2 = function()
 PowerCab.getRefreshRate = function()
 {
   return HostController.getIntPref(this.refreshRatePrefKey, 15);
+}
+
+PowerCab.getIndicesMask = function()
+{
+  return HostController.getIntPref(this.indicesMaskPrefKey, PowerCab.Indices.def);
 }

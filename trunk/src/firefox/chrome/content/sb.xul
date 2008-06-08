@@ -5,22 +5,22 @@
 	         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	<script src="classes/Timer.js"/>
 	<script src="classes/PowerCab.js"/>
+	<script src="classes/Indices.js"/>
 	<script src="classes/Refresher.js"/>
 	<script src="classes/HostController.js"/>
 	<statusbar id="status-bar">
 	  <statusbarpanel id="afx-panel" class="afx-whole" context="afx-cxmenu" ondblclick="HostController.showDetails(event)" insertafter="gr-box" tooltiptext="ok">
 	  	<stringbundle id="afx-messagesBundle" src="chrome://adamantfx/locale/messages.properties"/>
-		<image src="chrome://adamantfx/content/img/in.gif"/>
-		<label value="NA" id="afx-trafIn" class="afx-simple-label"/>
-		<image src="chrome://adamantfx/content/img/out.gif"/>
-		<label value="NA" id="afx-trafOut" class="afx-simple-label"/>
+		<box id="powercab-indices" orient="horizontal">
+			<label value="&indices.loading;"/>
+		</box>
 		<image src="chrome://adamantfx/content/adlogo.png" onclick="PowerCab.startRefresh(event)" id="afx-mainbutton"/>
 		<popupset>
 		    <popup id="afx-cxmenu" position="before_end">
 		  		<menuitem
 		  			label="&menu.details;"
 		    		oncommand="HostController.showDetails(event)"
-		    		class="afx-bold-label"/>
+		    		style="font-weight: bold;"/>
 		  		<menuitem
 		  			label="&menu.prefs;"
 		    		oncommand="HostController.showOptions(event)"/>

@@ -2,3 +2,4 @@
 <!ENTITY menu.prefs "Options">
 <!ENTITY menu.anotherUser "Another user">
 <!ENTITY tooltip.ready "Ready!">
+<!ENTITY indices.loading "Loading...">

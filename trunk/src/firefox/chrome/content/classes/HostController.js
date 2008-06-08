@@ -4,7 +4,6 @@
 		
   onLoad: function() {
     this.initialized = true;
-    try{this.preferences.clearUserPref("extensions.adamantfx.password");}catch(e){} // Should be removed later
     this.AdamantButton = document.getElementById("afx-mainbutton");
     this.ExtensionZone = document.getElementById("afx-panel");
     this.TextResources = document.getElementById("afx-messagesBundle");
@@ -54,12 +53,7 @@
 	
    	if (data)
    	{
-	 	var lblIn = document.getElementById("afx-trafIn"),
-	 		lblOut = document.getElementById("afx-trafOut");
-	 	lblIn.value = data.trafIn.toString();
-	 	lblOut.value = data.trafOut.toString();
-	 	lblIn.className = (data.trafIn >= data.trafOut) ? "afx-bold-label" : "afx-simple-label";
-	 	lblOut.className = (data.trafIn < data.trafOut) ? "afx-bold-label" : "afx-simple-label";
+   		this.updateIndices(data);
  	}
   },
   	  
@@ -136,6 +130,53 @@
 	createDomParser : function()
 	{
 		return new DOMParser();
+	},
+		
+	updateIndices : function(data)
+	{
+		if (data){
+			this.data = data;
+		}
+		else{
+			data = this.data;
+		}
+		
+		var cont = document.getElementById("powercab-indices");
+		
+		while (cont.firstChild) {
+  			cont.removeChild(cont.firstChild);
+		}
+		
+		try
+		{
+			var indices = PowerCab.Indices.fromMask(PowerCab.getIndicesMask());
+			if (indices.length == 0){
+				var lbl = document.createElement("label");
+				lbl.setAttribute("value", this.getResourceString("noIndices"));
+				cont.appendChild(lbl);
+			}
+			else{
+				for(var i in indices){
+					var ind = indices[i];
+					var img = document.createElement("image");
+					img.setAttribute("src", "chrome://adamantfx/content/img/"+ind.img);
+					img.setAttribute("tooltipText", this.getResourceString(ind.label));
+					cont.appendChild(img);
+					
+					var lbl = document.createElement("label");
+					lbl.setAttribute("value", data.getValue(ind.path));
+					lbl.setAttribute("tooltipText", this.getResourceString(ind.label));
+					cont.appendChild(lbl);
+				}
+			}
+		}
+		catch(e)
+		{
+			var lbl = document.createElement("label");
+			lbl.setAttribute("value", this.getResourceString("error"));
+			cont.appendChild(lbl);
+			throw e;
+		}
 	},
 		
 	getUserNameAndPassword : function(key, ignoreSaved, nameUsedKey)

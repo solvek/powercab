@@ -1,3 +1,4 @@
 ﻿<!ENTITY prefwindow.title "Preferences for PowerCab F.X.">
 <!ENTITY intpref.username "Username:">
 <!ENTITY intpref.refrperiod "Refresh period (minutes):">
+<!ENTITY intpref.indices "Indices">

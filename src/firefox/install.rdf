@@ -5,7 +5,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>{D3B5C0C7-669F-4646-9367-E83664AEABDB}</em:id>
-    <em:version>0.3</em:version>
+    <em:version>0.3.1</em:version>
     <em:type>2</em:type>
     <em:aboutURL>chrome://adamantfx/content/about.xul</em:aboutURL>
     <em:optionsURL>chrome://adamantfx/content/options.xul</em:optionsURL>

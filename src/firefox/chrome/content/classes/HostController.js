@@ -187,8 +187,8 @@
 			try
 			{
 				var loginPref = this.getCharPref(nameUsedKey);
-				var pswManager = Components.classes ['@mozilla.org/passwordmanager;1']
-					.getService(Components.interfaces.nsIPasswordManagerInternal);
+				var pswManager = Components.classes ['@mozilla.org/login-manager;1']
+					.getService(Components.interfaces.nsILoginManager);
 				pswManager.findPasswordEntry(
 					key,
 					loginPref,

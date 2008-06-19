@@ -1,29 +1,24 @@
 <?xml version="1.0"?>
-
-<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
-
-  <Description about="urn:mozilla:install-manifest">
-    <em:id>{D3B5C0C7-669F-4646-9367-E83664AEABDB}</em:id>
-    <em:version>0.3.1</em:version>
-    <em:type>2</em:type>
-    <em:aboutURL>chrome://adamantfx/content/about.xul</em:aboutURL>
-    <em:optionsURL>chrome://adamantfx/content/options.xul</em:optionsURL>
-    <em:iconURL>chrome://adamantfx/content/mHeader.png</em:iconURL>
-   
-    <em:targetApplication>
-     <!-- Firefox -->
-     <Description>
-        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-        <em:minVersion>1.5</em:minVersion>
-        <em:maxVersion>3.0.*</em:maxVersion>
-      </Description>
-   </em:targetApplication>
-   
-    <em:name>PowerCab FX</em:name>
-    <em:description>Extension pretty displays traffics for Adamant's homenet users</em:description>
-    <em:creator>Sergi Adamchuk</em:creator>
-    <em:homepageURL>http://code.google.com/p/powercab/</em:homepageURL>
-    <em:updateURL>http://powercab.googlecode.com/svn/trunk/output/pc_fxupd.rdf</em:updateURL>
-  </Description>      
-</RDF>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+                   em:id="{D3B5C0C7-669F-4646-9367-E83664AEABDB}"
+                   em:version="0.3.1"
+                   em:type="2"
+                   em:aboutURL="chrome://adamantfx/content/about.xul"
+                   em:optionsURL="chrome://adamantfx/content/options.xul"
+                   em:iconURL="chrome://adamantfx/content/mHeader.png"
+                   em:name="PowerCab FX"
+                   em:description="Extension pretty displays traffics for Adamant's homenet users"
+                   em:creator="Sergi Adamchuk"
+                   em:homepageURL="http://code.google.com/p/powercab/"
+                   em:updateURL="http://powercab.googlecode.com/svn/trunk/output/pc_fxupd.rdf"
+                   em:updateKey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCmmDOKKer9NGeVGgM55rkgMEhpBuD66Ahm8+m3bVX/HxrFG9PR5K20cCD1+OYeScUyg1prE5ZFDv4SGOU+uuI5YKMe8PnudP2TwNThcSTiU1OfGvyygR5Wu7he155l3jCHtoZINOs0brVW3CbYboXdI1NRjbCB2pfrVg41Ub0cMQIDAQAB">
+    <em:targetApplication RDF:resource="rdf:#$t58k4"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="rdf:#$t58k4"
+                   em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   em:minVersion="1.5"
+                   em:maxVersion="3.0.*" />
+</RDF:RDF>

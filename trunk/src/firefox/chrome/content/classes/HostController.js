@@ -51,10 +51,7 @@
 		this.gBrowser.reloadTab(this.infoTab);
 	}
 	
-   	if (data)
-   	{
-   		this.updateIndices(data);
- 	}
+	this.updateIndices(data);
   },
   	  
   showDetails : function()
@@ -149,6 +146,8 @@
 		
 		try
 		{
+			if (!data) throw "No data";
+			
 			var indices = PowerCab.Indices.fromMask(PowerCab.getIndicesMask());
 			if (indices.length == 0){
 				var lbl = document.createElement("label");
@@ -181,53 +180,64 @@
 		
 	getUserNameAndPassword : function(key, ignoreSaved, nameUsedKey)
 	{
-		var userName = {value : ""}, password = {value : ""}, hostUri = {value : ""};
+		var userName=this.getCharPref(nameUsedKey),
+			password;
+		key.match(/((?:\w+):\/\/(?:[\w.]+))\/?/);
+		var hostName = RegExp.$1;
+		
 		if (!ignoreSaved)
 		{
 			try
 			{
-				var loginPref = this.getCharPref(nameUsedKey);
 				var pswManager = Components.classes ['@mozilla.org/login-manager;1']
 					.getService(Components.interfaces.nsILoginManager);
-				pswManager.findPasswordEntry(
-					key,
-					loginPref,
-					null,
-					hostUri,
-					userName,
-					password);
+				
+				var logins = pswManager.findLogins({}, hostName, null, key);
+				
+				for (var i = 0; i < logins.length; i++) {
+				  if (logins[i].username == userName) {
+				     password = logins[i].password;
+				     break;
+				  }
+				}
 			}
 			catch(e)
 			{
 				dump(e);
+				throw e;
 			}
 		}
 		
-		if ((userName.value == "")||(password.value == ""))
+		if (userName == null||password == null)
 		{
+			var u={value:userName}, p={value:""};
 			var dialog = Components.classes ['@mozilla.org/network/default-auth-prompt;1']
 				.getService(Components.interfaces.nsIAuthPrompt);
-			if (!dialog.promptUsernameAndPassword(
+			if (dialog.promptUsernameAndPassword(
 				this.getResourceString("promptUserNamePassword"),
 				this.getResourceString("promptUserNamePasswordDet"),
 				key,
 				dialog.SAVE_PASSWORD_PERMANENTLY,
-				userName,
-				password))
+				u,
+				p))
 			{
+				userName = u.value;
+				password = p.value;
+			}
+			else{
 				return null;
 			}
 		}
 		
-		if ((userName.value == "")||(password.value == ""))
+		if (userName == null||password == null)
 		{
 			return null;
 		}
 		else
 		{
 			//this.preferences.clearUserPref(nameUsedKey);
-			this.preferences.setCharPref(nameUsedKey, userName.value);
-			return {userName : userName.value, password : password.value};
+			this.preferences.setCharPref(nameUsedKey, userName);
+			return {userName : userName, password : password};
 		}
 	}
 }

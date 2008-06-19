@@ -18,7 +18,7 @@ PowerCab.startRefresh2 = function()
 	if (!this.loginInfo)
 	{
 		var inf = HostController.getResourceString("noLoginInfo");
-		this.queryFinished(inf, null, inf);
+		this.queryFinished(inf, null, null);
 		return;
 	}
 	
@@ -81,7 +81,11 @@ PowerCab.startRefresh2 = function()
 			     {
 			     	shortText =  "Error loading data";
 			     }
-			     PowerCab.queryFinished(shortText, data, htmlDocument);
+			     try{
+			     	PowerCab.queryFinished(shortText, data, htmlDocument);
+			     }
+			     catch(e2){
+			     }
 			  }
 		 }
 		 catch(e)

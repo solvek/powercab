@@ -1,13 +1,28 @@
-#describes implementation of secure update in PowerCab
+#summary описано реалізацію secure update у PowerCab
 
-= Introduction =
+= Вступ=
 
-Add your content here.
+Версія [http://developer.mozilla.org/en/docs/Extension_Versioning%2C_Update_and_Compatibility#Securing_Updates Firefox 3 вимагає], щоб усі оновлення для розширень були підписані (або були розташовані на сервері із підтримкою SSL). Таку вимогу можна відключити встановивши значення [http://kb.mozillazine.org/Extensions.checkUpdateSecurity ключа] *extensions.checkUpdateSecurity* у *false*.
 
 
-= Details =
+= McCoy - інструмент для роботи з цифровим підписом =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+== Завантаження, можливості ==
+
+Програму можна завантажити [http://developer.mozilla.org/en/docs/McCoy звідси], достатньо розпакувати архів і запустити.
+Можливості програми:
+  * Генерація RSA ключа
+  * Додавання відкритого ключа у файл [https://powercab.googlecode.com/svn/trunk/src/firefox/install.rdf install.rdf]
+  * Підписування [https://powercab.googlecode.com/svn/trunk/output/pc_fxupd.rdf файлу з оновленням]
+
+_Файл оновлення pc_fxupd.rdf потрібно перепідписувати щоразу після його модифікації_
+
+== Управління ключем ==
+Файл з ключем знаходиться тут: https://powercab.googlecode.com/svn/trunk/src/mccoy/key3.db
+Щоб проінсталювати ключ потрібно закрити програму McCoy і перезаписати файл key3.db
+на місце старого у папці c:\Documents and Settings\adamchuk\Application Data\Mozilla\McCoy\Profiles\ln3ho3wn.default\ (у вашому випадку цей шлях може дещо відрізнятись)
+
+*Важливо: замінивши файл key3.db ваші старі ключі перетруться*
+
+== Пароль ==
+Ключ не є загальнодоступним, він зберігається у зашифрованому вигляді. При запуску McCoy програма запитує про пароль. Цей пароль відомий тільки розробникам.

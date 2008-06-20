@@ -180,8 +180,8 @@
 		
 	getUserNameAndPassword : function(key, ignoreSaved, nameUsedKey)
 	{
-		var userName=this.getCharPref(nameUsedKey),
-			password;
+		var userName=null,
+			password=null;
 		key.match(/((?:\w+):\/\/(?:[\w.]+))\/?/);
 		var hostName = RegExp.$1;
 		
@@ -189,22 +189,37 @@
 		{
 			try
 			{
-				var pswManager = Components.classes ['@mozilla.org/login-manager;1']
-					.getService(Components.interfaces.nsILoginManager);
-				
-				var logins = pswManager.findLogins({}, hostName, null, key);
-				
-				for (var i = 0; i < logins.length; i++) {
-				  if (logins[i].username == userName) {
-				     password = logins[i].password;
-				     break;
-				  }
+				userName=this.getCharPref(nameUsedKey);
+				if ("@mozilla.org/passwordmanager;1" in Components.classes) {
+					var u={value:""}, p={value:""}, hostUri = {value : hostName};
+					var pswManager = Components.classes ['@mozilla.org/passwordmanager;1']
+					.getService(Components.interfaces.nsIPasswordManagerInternal);
+					pswManager.findPasswordEntry(
+						key,
+						userName,
+						null,
+						hostUri,
+						u,
+						p);
+					password = p.value;
+				}
+				else{
+					var pswManager = Components.classes ['@mozilla.org/login-manager;1']
+						.getService(Components.interfaces.nsILoginManager);
+					
+					var logins = pswManager.findLogins({}, hostName, null, key);
+					
+					for (var i = 0; i < logins.length; i++) {
+					  if (logins[i].username == userName) {
+					     password = logins[i].password;
+					     break;
+					  }
+					}
 				}
 			}
 			catch(e)
 			{
 				dump(e);
-				throw e;
 			}
 		}
 		

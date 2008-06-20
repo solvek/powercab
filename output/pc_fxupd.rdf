@@ -9,7 +9,7 @@
                    em:updateLink="https://powercab.googlecode.com/files/powercab.fx.0.3.1.xpi" />
   <RDF:Description RDF:about="urn:mozilla:extension:{D3B5C0C7-669F-4646-9367-E83664AEABDB}"
                    em:version="0.3.1"
-                   em:signature="MIGTMA0GCSqGSIb3DQEBDQUAA4GBAJowMTqM7CbgtXCx9d12RXuvjS8mTjPM3YEa5EQSzrWf5p9Cc7SfHG+ze7SAMg722DPTCqgZe+jMImCF2M4doCZQ3KSr8E+blRPv19Px+JlME4E9f4j5Px1zLhLJPblNNEsKlO2Wg6DYS4rg7byCptGcgPW2KPnPUlSZmJm0m2Vh">
+                   em:signature="MIGTMA0GCSqGSIb3DQEBDQUAA4GBAIOcowLsb2IL/xpHIgt2A8leZtO0XYC4TaD1YB0JNZotlL+XkMEMoMOuU72D8aiWxGyFFxujqH4Go50zDRBr+TBUy8ybGaacXMxVyTYP+6V/KmTOQhXGuj2JJgZgmAW3fvA8tXi+4p1FNq4PqTcgBwYoqYE6ujwSnJMfVwFRuCOA">
     <em:targetApplication RDF:resource="rdf:#$F58k4"/>
   </RDF:Description>
 </RDF:RDF>

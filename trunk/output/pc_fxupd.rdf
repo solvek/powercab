@@ -5,10 +5,10 @@
   <RDF:Description RDF:about="rdf:#$F58k4"
                    em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
                    em:minVersion="1.5"
-                   em:maxVersion="3.0.*"
-                   em:updateLink="https://powercab.googlecode.com/files/powercab.fx.0.3.1.xpi" />
+                   em:maxVersion="3.5.*"
+                   em:updateLink="https://powercab.googlecode.com/files/powercab.fx.0.3.2.xpi" />
   <RDF:Description RDF:about="urn:mozilla:extension:{D3B5C0C7-669F-4646-9367-E83664AEABDB}"
-                   em:version="0.3.1"
+                   em:version="0.3.3"
                    em:signature="MIGTMA0GCSqGSIb3DQEBDQUAA4GBAIOcowLsb2IL/xpHIgt2A8leZtO0XYC4TaD1YB0JNZotlL+XkMEMoMOuU72D8aiWxGyFFxujqH4Go50zDRBr+TBUy8ybGaacXMxVyTYP+6V/KmTOQhXGuj2JJgZgmAW3fvA8tXi+4p1FNq4PqTcgBwYoqYE6ujwSnJMfVwFRuCOA">
     <em:targetApplication RDF:resource="rdf:#$F58k4"/>
   </RDF:Description>

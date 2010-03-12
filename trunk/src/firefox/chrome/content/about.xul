@@ -10,7 +10,7 @@
   </hbox>
   <hbox>
   	<spacer flex="1"/>
-  	<text value="&version; 0.3.3" align="center"/>
+  	<text value="&version; 0.3.4" align="center"/>
   	<spacer flex="1"/>
   </hbox>
   <separator class="thin"/>
